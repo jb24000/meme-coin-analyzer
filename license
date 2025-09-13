@@ -1,0 +1,91 @@
+MIT License
+
+Copyright (c) 2025 Meme Coin Analyzer Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Additional Terms
+
+### Investment Disclaimer
+This software is designed for educational and research purposes only. The analysis 
+provided by this tool should not be considered as financial advice, investment 
+recommendations, or guarantees of future performance. 
+
+Cryptocurrency investments, particularly in meme coins and other volatile digital 
+assets, carry extremely high risks including but not limited to:
+
+- Total loss of invested capital
+- High volatility and price manipulation
+- Regulatory risks and potential bans
+- Technical risks including smart contract vulnerabilities
+- Market manipulation and "rug pull" schemes
+- Liquidity risks and inability to exit positions
+
+Users acknowledge that:
+1. All investment decisions are made at their own risk
+2. The software developers are not responsible for any financial losses
+3. Past performance does not predict future results
+4. The analysis algorithms may contain errors or biases
+5. External data sources may be inaccurate or manipulated
+
+### Data Privacy
+This software may process blockchain addresses and transaction data, which are 
+publicly available on blockchain networks. Users are responsible for:
+- Protecting their private keys and wallet security
+- Understanding the privacy implications of blockchain analysis
+- Complying with applicable privacy laws in their jurisdiction
+
+### Third-Party APIs
+This software integrates with various third-party APIs and data sources. Users 
+are subject to the terms of service and rate limits of these external services.
+The software developers are not responsible for:
+- Third-party API availability or accuracy
+- Changes to third-party terms of service
+- Costs associated with premium API access
+
+### Regulatory Compliance
+Users are solely responsible for ensuring their use of this software complies 
+with all applicable laws and regulations in their jurisdiction, including but 
+not limited to:
+- Securities regulations
+- Anti-money laundering (AML) requirements
+- Know Your Customer (KYC) obligations
+- Tax reporting requirements
+- Trading and investment regulations
+
+### Limitation of Liability
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY SPECIAL, 
+INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT 
+LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS 
+OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE 
+OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF 
+THE POSSIBILITY OF SUCH DAMAGES.
+
+### Indemnification
+By using this software, you agree to indemnify and hold harmless the authors, 
+contributors, and copyright holders from and against any claims, damages, losses, 
+costs, and expenses (including reasonable attorneys' fees) arising out of or 
+resulting from your use of the software or violation of these terms.
+
+---
+
+By using this software, you acknowledge that you have read, understood, and agree 
+to be bound by these terms and conditions.
