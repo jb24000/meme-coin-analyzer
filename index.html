@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Meme Coin Analyzer</title>
+    <title>Solana Meme Coin Analyzer Pro</title>
     <style>
         * {
             margin: 0;
@@ -1011,6 +1011,10 @@
 
             try {
                 const analysis = await tokenAnalyzer.analyzeToken(coinAddress);
+                
+                // Cache analysis data for offline use
+                pwaManager.cacheAnalysis(analysis);
+                
                 displayResults(analysis);
                 
                 document.getElementById('loading').style.display = 'none';
@@ -1019,22 +1023,57 @@
             } catch (error) {
                 console.error('Analysis failed:', error);
                 
-                // Fall back to demo data if real analysis fails
-                const demoAnalysis = generateDemoAnalysis(coinAddress);
-                displayResults(demoAnalysis);
+                // Check if we're offline and have cached data
+                if (!navigator.onLine) {
+                    const cachedData = await getCachedAnalysis(coinAddress);
+                    if (cachedData) {
+                        displayResults(cachedData);
+                        showOfflineMessage();
+                    } else {
+                        const demoAnalysis = generateDemoAnalysis(coinAddress);
+                        displayResults(demoAnalysis);
+                        showOfflineMessage();
+                    }
+                } else {
+                    // Fall back to demo data if real analysis fails
+                    const demoAnalysis = generateDemoAnalysis(coinAddress);
+                    displayResults(demoAnalysis);
+                    
+                    // Show error message
+                    const resultsDiv = document.getElementById('results');
+                    resultsDiv.insertAdjacentHTML('afterbegin', 
+                        '<div class="error-message">⚠️ Unable to fetch real-time data. Showing demo analysis. Please configure APIs for accurate results.</div>'
+                    );
+                }
                 
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('results').style.display = 'block';
-                
-                // Show error message
-                const resultsDiv = document.getElementById('results');
-                resultsDiv.insertAdjacentHTML('afterbegin', 
-                    '<div class="error-message">⚠️ Unable to fetch real-time data. Showing demo analysis. Please configure APIs for accurate results.</div>'
-                );
             } finally {
                 document.getElementById('analyzeBtn').disabled = false;
                 document.getElementById('btnText').textContent = 'Analyze Token';
             }
+        }
+
+        async function getCachedAnalysis(contractAddress) {
+            try {
+                if ('caches' in window) {
+                    const cache = await caches.open('meme-coin-analyzer-data-v1.0.0');
+                    const response = await cache.match(`/analysis/${contractAddress}`);
+                    if (response) {
+                        return await response.json();
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to get cached analysis:', error);
+            }
+            return null;
+        }
+
+        function showOfflineMessage() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.insertAdjacentHTML('afterbegin', 
+                '<div class="error-message">📱 You\'re offline. Showing cached analysis data. Results will sync when connection is restored.</div>'
+            );
         }
 
         function displayResults(analysis) {
