@@ -87,6 +87,50 @@
             padding: 40px;
         }
 
+        .api-status {
+            background: var(--bg-gray);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--error-red);
+        }
+
+        .status-dot.connected {
+            background: var(--success-green);
+        }
+
+        .status-text {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+        }
+
+        .setup-apis {
+            background: linear-gradient(135deg, var(--warning-orange), #f97316);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
         .input-section {
             background: var(--bg-gray);
             border: 1px solid var(--border-gray);
@@ -198,24 +242,6 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .risk-high {
-            background: rgba(239, 68, 68, 0.2);
-            color: #fca5a5;
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-
-        .risk-medium {
-            background: rgba(245, 158, 11, 0.2);
-            color: #fcd34d;
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .risk-low {
-            background: rgba(16, 185, 129, 0.2);
-            color: #6ee7b7;
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -273,92 +299,107 @@
             line-height: 1.5;
         }
 
-        .analysis-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .analysis-card {
-            background: var(--white);
-            border: 1px solid var(--border-gray);
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .analysis-card h3 {
-            color: var(--dark-gray);
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .factor-bar {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .factor-name {
-            width: 120px;
-            font-weight: 500;
-            color: var(--medium-gray);
-            font-size: 0.875rem;
-        }
-
-        .factor-progress {
-            flex: 1;
-            height: 6px;
-            background: var(--border-gray);
-            border-radius: 3px;
-            overflow: hidden;
-            margin: 0 12px;
-        }
-
-        .factor-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 1s ease;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
-        }
-
-        .factor-score {
-            width: 32px;
-            text-align: right;
-            font-weight: 600;
-            color: var(--dark-gray);
-            font-size: 0.875rem;
-        }
-
-        .tracking-section {
+        .api-integration-section {
             background: var(--bg-gray);
             border: 1px solid var(--border-gray);
             border-radius: 12px;
             padding: 28px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
-        .tracking-header {
-            display: flex;
-            align-items: center;
-            justify-content: between;
-            margin-bottom: 24px;
-        }
-
-        .tracking-title {
-            color: var(--dark-gray);
+        .integration-title {
             font-size: 1.25rem;
             font-weight: 600;
-            margin-right: auto;
+            color: var(--dark-gray);
+            margin-bottom: 16px;
         }
 
-        .tracking-form {
+        .api-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
+        }
+
+        .api-card {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .api-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .api-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 4px;
+        }
+
+        .api-status-text {
+            font-size: 0.75rem;
+            color: var(--light-gray);
+        }
+
+        .setup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin: 20px;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--light-gray);
+        }
+
+        .api-setup-form {
+            display: grid;
+            gap: 16px;
         }
 
         .form-group {
@@ -373,8 +414,8 @@
             margin-bottom: 6px;
         }
 
-        .form-input, .form-select {
-            padding: 10px 12px;
+        .form-input {
+            padding: 12px 16px;
             border: 1px solid var(--border-gray);
             border-radius: 6px;
             font-size: 14px;
@@ -382,143 +423,21 @@
             color: var(--dark-gray);
         }
 
-        .form-input:focus, .form-select:focus {
+        .form-input:focus {
             outline: none;
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
         }
 
-        .tracking-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .track-btn {
-            padding: 12px 24px;
+        .save-keys-btn {
+            background: var(--success-green);
+            color: var(--white);
             border: none;
+            padding: 12px 24px;
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .track-btn.success {
-            background: var(--success-green);
-            color: var(--white);
-        }
-
-        .track-btn.success:hover {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-
-        .track-btn.failure {
-            background: var(--error-red);
-            color: var(--white);
-        }
-
-        .track-btn.failure:hover {
-            background: #dc2626;
-            transform: translateY(-1px);
-        }
-
-        .performance-dashboard {
-            background: var(--white);
-            border: 1px solid var(--border-gray);
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 24px;
-        }
-
-        .dashboard-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .dashboard-title {
-            color: var(--dark-gray);
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .model-status {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 12px;
-            background: var(--bg-gray);
-            border-radius: 16px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--medium-gray);
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--success-green);
-            margin-right: 6px;
-        }
-
-        .dashboard-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 20px;
-            background: var(--bg-gray);
-            border-radius: 8px;
-            border: 1px solid var(--border-gray);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            color: var(--light-gray);
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .recent-activity {
-            background: var(--bg-gray);
-            border-radius: 8px;
-            padding: 16px;
-            border: 1px solid var(--border-gray);
-        }
-
-        .activity-header {
-            font-weight: 600;
-            color: var(--dark-gray);
-            margin-bottom: 12px;
-            font-size: 0.875rem;
-        }
-
-        .activity-list {
-            space-y: 8px;
-        }
-
-        .activity-item {
-            font-size: 0.75rem;
-            color: var(--light-gray);
-            line-height: 1.4;
+            margin-top: 16px;
         }
 
         .loading {
@@ -550,14 +469,24 @@
             margin-top: 32px;
         }
 
-        .disclaimer h3 {
-            margin-bottom: 12px;
-            font-size: 1.125rem;
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--error-red);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.875rem;
         }
 
-        .disclaimer p {
-            opacity: 0.9;
-            line-height: 1.6;
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success-green);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.875rem;
         }
 
         .github-link {
@@ -584,10 +513,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .analysis-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .input-group {
                 grid-template-columns: 1fr;
             }
@@ -599,11 +524,47 @@
         <div class="header">
             <div class="header-content">
                 <h1>🎯 Meme Coin Analyzer Pro</h1>
-                <p>Professional-grade risk assessment and performance tracking for pump.fun tokens</p>
+                <p>Professional-grade risk assessment with real-time blockchain data</p>
             </div>
         </div>
 
         <div class="main-content">
+            <!-- API Status Section -->
+            <div class="api-status">
+                <div class="status-indicator">
+                    <div class="status-dot" id="apiStatusDot"></div>
+                    <span class="status-text" id="apiStatusText">APIs not configured - Using demo data</span>
+                </div>
+                <button class="setup-apis" onclick="showSetupModal()">Configure APIs</button>
+            </div>
+
+            <!-- API Integration Overview -->
+            <div class="api-integration-section">
+                <div class="integration-title">🔌 Connected Data Sources</div>
+                <div class="api-grid">
+                    <div class="api-card">
+                        <div class="api-logo">DX</div>
+                        <div class="api-name">DexScreener</div>
+                        <div class="api-status-text" id="dexscreener-status">Not connected</div>
+                    </div>
+                    <div class="api-card">
+                        <div class="api-logo">ES</div>
+                        <div class="api-name">Etherscan</div>
+                        <div class="api-status-text" id="etherscan-status">Not connected</div>
+                    </div>
+                    <div class="api-card">
+                        <div class="api-logo">CG</div>
+                        <div class="api-name">CoinGecko</div>
+                        <div class="api-status-text" id="coingecko-status">Not connected</div>
+                    </div>
+                    <div class="api-card">
+                        <div class="api-logo">TW</div>
+                        <div class="api-name">Twitter</div>
+                        <div class="api-status-text" id="twitter-status">Not connected</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="input-section">
                 <div class="input-group">
                     <input type="text" id="coinAddress" placeholder="Enter token contract address..." />
@@ -615,20 +576,20 @@
 
             <div id="loading" class="loading" style="display: none;">
                 <div class="spinner"></div>
-                <p>Analyzing token metrics and market signals...</p>
+                <p>Fetching real-time blockchain data and analyzing token metrics...</p>
             </div>
 
             <div id="results" class="results">
                 <div class="score-overview">
                     <div class="score-card">
-                        <div class="score-value" id="overallScore">85</div>
+                        <div class="score-value" id="overallScore">--</div>
                         <div class="score-label">Overall Score</div>
-                        <div class="risk-level" id="riskLevel">Medium Risk</div>
+                        <div class="risk-level" id="riskLevel">Analyzing...</div>
                     </div>
-                    <div class="score-card" style="background: linear-gradient(135deg, var(--medium-gray), var(--dark-gray));">
-                        <div class="score-value" id="potentialReturn">12.5x</div>
-                        <div class="score-label">Potential Return</div>
-                        <div class="risk-level" style="background: rgba(255, 255, 255, 0.2); color: #d1d5db;">Based on similar tokens</div>
+                    <div class="score-card" style="background: linear-gradient(135deg, var(--success-green), #059669);">
+                        <div class="score-value" id="confidenceScore">--</div>
+                        <div class="score-label">Confidence Level</div>
+                        <div class="risk-level" style="background: rgba(255, 255, 255, 0.2); color: #d1fae5;">Based on data quality</div>
                     </div>
                 </div>
 
@@ -638,20 +599,20 @@
                             <div class="metric-icon" style="background: rgba(37, 99, 235, 0.1); color: var(--primary-blue);">🔒</div>
                             <div class="metric-title">Liquidity Security</div>
                         </div>
-                        <div class="metric-value" id="liquidityScore">87/100</div>
+                        <div class="metric-value" id="liquidityScore">--/100</div>
                         <div class="metric-description" id="liquidityDesc">
-                            Liquidity locked for 6 months. Low rug pull risk detected.
+                            Analyzing liquidity locks and rug pull risks...
                         </div>
                     </div>
 
                     <div class="metric-card">
                         <div class="metric-header">
-                            <div class="metric-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success-green);">🎯</div>
-                            <div class="metric-title">Meme Uniqueness</div>
+                            <div class="metric-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success-green);">🛡️</div>
+                            <div class="metric-title">Contract Security</div>
                         </div>
-                        <div class="metric-value" id="uniquenessScore" style="color: var(--success-green);">92/100</div>
-                        <div class="metric-description" id="uniquenessDesc">
-                            Highly original concept with strong viral potential.
+                        <div class="metric-value" id="securityScore">--/100</div>
+                        <div class="metric-description" id="securityDesc">
+                            Checking contract verification and security features...
                         </div>
                     </div>
 
@@ -660,171 +621,78 @@
                             <div class="metric-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning-orange);">👑</div>
                             <div class="metric-title">Smart Money Activity</div>
                         </div>
-                        <div class="metric-value" id="smartMoneyScore" style="color: var(--warning-orange);">76/100</div>
+                        <div class="metric-value" id="smartMoneyScore">--/100</div>
                         <div class="metric-description" id="smartMoneyDesc">
-                            Moderate whale activity. 8 successful traders detected.
+                            Tracking successful trader wallet activity...
                         </div>
                     </div>
 
                     <div class="metric-card">
                         <div class="metric-header">
-                            <div class="metric-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--error-red);">⚠️</div>
-                            <div class="metric-title">Risk Assessment</div>
+                            <div class="metric-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">📈</div>
+                            <div class="metric-title">Social Sentiment</div>
                         </div>
-                        <div class="metric-value" id="riskScore" style="color: var(--error-red);">68/100</div>
-                        <div class="metric-description" id="riskDesc">
-                            Some concerns detected. Review tokenomics carefully.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="analysis-grid">
-                    <div class="analysis-card">
-                        <h3>📊 Technical Factors</h3>
-                        <div class="factor-bar">
-                            <div class="factor-name">Liquidity Lock</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="liquidityBar"></div>
-                            </div>
-                            <div class="factor-score" id="liquidityFactorScore">87</div>
-                        </div>
-                        <div class="factor-bar">
-                            <div class="factor-name">Contract Security</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="securityBar"></div>
-                            </div>
-                            <div class="factor-score" id="securityFactorScore">93</div>
-                        </div>
-                        <div class="factor-bar">
-                            <div class="factor-name">Trading Volume</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="volumeBar"></div>
-                            </div>
-                            <div class="factor-score" id="volumeFactorScore">84</div>
-                        </div>
-                        <div class="factor-bar">
-                            <div class="factor-name">Holder Distribution</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="distributionBar"></div>
-                            </div>
-                            <div class="factor-score" id="distributionFactorScore">71</div>
-                        </div>
-                    </div>
-
-                    <div class="analysis-card">
-                        <h3>🚀 Growth Indicators</h3>
-                        <div class="factor-bar">
-                            <div class="factor-name">Community Size</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="communityBar"></div>
-                            </div>
-                            <div class="factor-score" id="communityFactorScore">76</div>
-                        </div>
-                        <div class="factor-bar">
-                            <div class="factor-name">Social Sentiment</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="sentimentBar"></div>
-                            </div>
-                            <div class="factor-score" id="sentimentFactorScore">82</div>
-                        </div>
-                        <div class="factor-bar">
-                            <div class="factor-name">Migration Status</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="migrationBar"></div>
-                            </div>
-                            <div class="factor-score" id="migrationFactorScore">45</div>
-                        </div>
-                        <div class="factor-bar">
-                            <div class="factor-name">Time Since Launch</div>
-                            <div class="factor-progress">
-                                <div class="factor-fill" id="timeBar"></div>
-                            </div>
-                            <div class="factor-score" id="timeFactorScore">68</div>
+                        <div class="metric-value" id="socialScore">--/100</div>
+                        <div class="metric-description" id="socialDesc">
+                            Analyzing social media sentiment and engagement...
                         </div>
                     </div>
                 </div>
 
-                <div class="tracking-section">
-                    <div class="tracking-header">
-                        <div class="tracking-title">📈 Track Token Performance</div>
-                    </div>
-                    <div class="tracking-form">
-                        <div class="form-group">
-                            <label class="form-label">Days Since Launch</label>
-                            <input type="number" class="form-input" id="daysSinceLaunch" placeholder="e.g., 7" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Current Market Cap</label>
-                            <input type="text" class="form-input" id="marketCap" placeholder="e.g., 500K">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Migration Status</label>
-                            <select class="form-select" id="migrationStatus">
-                                <option value="">Select status...</option>
-                                <option value="pump_fun">Still on pump.fun</option>
-                                <option value="migrated">Migrated from pump.fun</option>
-                                <option value="other">Other platform</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Performance Change</label>
-                            <input type="text" class="form-input" id="performanceChange" placeholder="e.g., +250% or -80%">
-                        </div>
-                    </div>
-                    <div class="tracking-buttons">
-                        <button class="track-btn success" onclick="trackOutcome('success')">
-                            ✅ Success (10x+ Return)
-                        </button>
-                        <button class="track-btn failure" onclick="trackOutcome('failure')">
-                            ❌ Failure (50%+ Loss)
-                        </button>
-                        <button class="track-btn" style="background: var(--light-gray); color: var(--white);" onclick="trackOutcome('pending')">
-                            ⏳ Still Monitoring
-                        </button>
-                    </div>
-                </div>
-
-                <div class="performance-dashboard">
-                    <div class="dashboard-header">
-                        <div class="dashboard-title">🧠 AI Learning Dashboard</div>
-                        <div class="model-status">
-                            <div class="status-dot"></div>
-                            Model Active
-                        </div>
-                    </div>
-                    <div class="dashboard-stats">
-                        <div class="stat-card">
-                            <div class="stat-value" id="totalPredictions">147</div>
-                            <div class="stat-label">Total Predictions</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="accuracyRate">78%</div>
-                            <div class="stat-label">Accuracy Rate</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="successfulPicks">52</div>
-                            <div class="stat-label">Successful Picks</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="avgReturn">8.2x</div>
-                            <div class="stat-label">Avg Success Return</div>
-                        </div>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="activity-header">Recent Model Improvements</div>
-                        <div class="activity-list">
-                            <div class="activity-item">• Improved liquidity lock detection accuracy by 15%</div>
-                            <div class="activity-item">• Enhanced smart money tracking algorithm</div>
-                            <div class="activity-item">• Updated migration status weighting based on 23 new data points</div>
-                            <div class="activity-item">• Reduced false positive rate for rug pull detection</div>
-                        </div>
-                    </div>
+                <div id="analysisDetails" style="display: none;">
+                    <!-- Detailed analysis will be shown here -->
                 </div>
             </div>
 
             <div class="disclaimer">
                 <h3>⚠️ Professional Disclaimer</h3>
-                <p>This tool is for educational and research purposes only. Cryptocurrency investments, especially meme coins, are extremely high-risk and volatile. Past performance does not guarantee future results. Always conduct your own research and never invest more than you can afford to lose completely. Consider consulting with a qualified financial advisor before making investment decisions.</p>
+                <p>This tool provides analysis for educational purposes only. Cryptocurrency investments are extremely high-risk. Always do your own research and never invest more than you can afford to lose completely. The analysis may contain errors and should not be considered financial advice.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Setup Modal -->
+    <div class="setup-modal" id="setupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">🔧 API Configuration</div>
+                <button class="close-modal" onclick="hideSetupModal()">&times;</button>
+            </div>
+            
+            <div id="modalMessages"></div>
+            
+            <div class="api-setup-form">
+                <div class="form-group">
+                    <label class="form-label">DexScreener API Key</label>
+                    <input type="password" class="form-input" id="dexscreenerKey" placeholder="Get free key from dexscreener.com/api">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Etherscan API Key</label>
+                    <input type="password" class="form-input" id="etherscanKey" placeholder="Get free key from etherscan.io/apis">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">CoinGecko API Key (Optional)</label>
+                    <input type="password" class="form-input" id="coingeckoKey" placeholder="Optional - for enhanced market data">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Twitter Bearer Token (Optional)</label>
+                    <input type="password" class="form-input" id="twitterToken" placeholder="Optional - for social sentiment analysis">
+                </div>
+                
+                <button class="save-keys-btn" onclick="saveAPIKeys()">Save Configuration</button>
+            </div>
+            
+            <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-gray);">
+                <h4 style="margin-bottom: 12px; color: var(--dark-gray);">📚 How to get API keys:</h4>
+                <ul style="color: var(--light-gray); font-size: 0.875rem; line-height: 1.5;">
+                    <li><strong>DexScreener:</strong> Visit <a href="https://dexscreener.com/api" target="_blank">dexscreener.com/api</a> - Free tier: 300 req/min</li>
+                    <li><strong>Etherscan:</strong> Visit <a href="https://etherscan.io/apis" target="_blank">etherscan.io/apis</a> - Free tier: 5 req/sec</li>
+                    <li><strong>CoinGecko:</strong> Visit <a href="https://www.coingecko.com/en/api/pricing" target="_blank">coingecko.com/api</a> - Free tier available</li>
+                    <li><strong>Twitter:</strong> Visit <a href="https://developer.twitter.com/" target="_blank">developer.twitter.com</a> - Free tier available</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -836,12 +704,293 @@
     </a>
 
     <script>
-        // Enhanced tracking system with professional features
-        let analysisHistory = JSON.parse(localStorage.getItem('memeAnalysisHistory') || '[]');
-        let modelWeights = JSON.parse(localStorage.getItem('memeModelWeights') || '{}');
-        let performanceMetrics = JSON.parse(localStorage.getItem('memePerformanceMetrics') || '{}');
+        // API Configuration Management
+        class APIManager {
+            constructor() {
+                this.apis = {
+                    dexscreener: { key: null, status: 'disconnected' },
+                    etherscan: { key: null, status: 'disconnected' },
+                    coingecko: { key: null, status: 'disconnected' },
+                    twitter: { key: null, status: 'disconnected' }
+                };
+                this.loadConfiguration();
+                this.updateStatusDisplay();
+            }
+            
+            loadConfiguration() {
+                const config = JSON.parse(localStorage.getItem('apiConfig') || '{}');
+                Object.keys(this.apis).forEach(api => {
+                    if (config[api]) {
+                        this.apis[api].key = config[api];
+                        this.apis[api].status = 'connected';
+                    }
+                });
+            }
+            
+            saveConfiguration(newConfig) {
+                const config = {};
+                Object.keys(newConfig).forEach(api => {
+                    if (newConfig[api]) {
+                        this.apis[api].key = newConfig[api];
+                        this.apis[api].status = 'connected';
+                        config[api] = newConfig[api];
+                    }
+                });
+                localStorage.setItem('apiConfig', JSON.stringify(config));
+                this.updateStatusDisplay();
+            }
+            
+            updateStatusDisplay() {
+                const connectedAPIs = Object.values(this.apis).filter(api => api.status === 'connected').length;
+                const statusDot = document.getElementById('apiStatusDot');
+                const statusText = document.getElementById('apiStatusText');
+                
+                if (connectedAPIs > 0) {
+                    statusDot.classList.add('connected');
+                    statusText.textContent = `${connectedAPIs} API${connectedAPIs > 1 ? 's' : ''} connected - Real data available`;
+                } else {
+                    statusDot.classList.remove('connected');
+                    statusText.textContent = 'APIs not configured - Using demo data';
+                }
+                
+                // Update individual API status
+                Object.keys(this.apis).forEach(api => {
+                    const statusElement = document.getElementById(`${api}-status`);
+                    if (statusElement) {
+                        statusElement.textContent = this.apis[api].status === 'connected' ? 'Connected' : 'Not connected';
+                        statusElement.style.color = this.apis[api].status === 'connected' ? 'var(--success-green)' : 'var(--light-gray)';
+                    }
+                });
+            }
+            
+            isConnected(api) {
+                return this.apis[api] && this.apis[api].status === 'connected';
+            }
+            
+            getKey(api) {
+                return this.apis[api]?.key;
+            }
+        }
 
-        function analyzeCoin() {
+        // Real API Integration Classes
+        class DexScreenerAPI {
+            constructor(apiKey) {
+                this.apiKey = apiKey;
+                this.baseUrl = 'https://api.dexscreener.com/latest';
+            }
+            
+            async getTokenData(contractAddress) {
+                const response = await fetch(`${this.baseUrl}/dex/tokens/${contractAddress}`, {
+                    headers: this.apiKey ? { 'X-API-Key': this.apiKey } : {}
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`DexScreener API error: ${response.status}`);
+                }
+                
+                return await response.json();
+            }
+        }
+
+        class EtherscanAPI {
+            constructor(apiKey) {
+                this.apiKey = apiKey;
+                this.baseUrl = 'https://api.etherscan.io/api';
+            }
+            
+            async getContractInfo(contractAddress) {
+                const response = await fetch(`${this.baseUrl}?module=contract&action=getsourcecode&address=${contractAddress}&apikey=${this.apiKey}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Etherscan API error: ${response.status}`);
+                }
+                
+                return await response.json();
+            }
+            
+            async getTokenInfo(contractAddress) {
+                const response = await fetch(`${this.baseUrl}?module=token&action=tokeninfo&contractaddress=${contractAddress}&apikey=${this.apiKey}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Etherscan API error: ${response.status}`);
+                }
+                
+                return await response.json();
+            }
+        }
+
+        // Advanced Analysis Engine
+        class TokenAnalyzer {
+            constructor(apiManager) {
+                this.apiManager = apiManager;
+                this.dexScreener = new DexScreenerAPI(apiManager.getKey('dexscreener'));
+                this.etherscan = new EtherscanAPI(apiManager.getKey('etherscan'));
+            }
+            
+            async analyzeToken(contractAddress) {
+                const analysis = {
+                    contractAddress,
+                    timestamp: Date.now(),
+                    dataQuality: 0,
+                    sources: [],
+                    scores: {},
+                    details: {}
+                };
+                
+                try {
+                    // DexScreener Analysis
+                    if (this.apiManager.isConnected('dexscreener')) {
+                        const dexData = await this.dexScreener.getTokenData(contractAddress);
+                        analysis.sources.push('DexScreener');
+                        analysis.details.dexData = dexData;
+                        analysis.scores.liquidity = this.calculateLiquidityScore(dexData);
+                        analysis.dataQuality += 30;
+                    }
+                    
+                    // Etherscan Analysis
+                    if (this.apiManager.isConnected('etherscan')) {
+                        const contractInfo = await this.etherscan.getContractInfo(contractAddress);
+                        analysis.sources.push('Etherscan');
+                        analysis.details.contractInfo = contractInfo;
+                        analysis.scores.security = this.calculateSecurityScore(contractInfo);
+                        analysis.dataQuality += 25;
+                    }
+                    
+                    // Calculate composite scores
+                    analysis.scores.overall = this.calculateOverallScore(analysis.scores);
+                    analysis.confidence = Math.min(100, analysis.dataQuality);
+                    
+                    return analysis;
+                    
+                } catch (error) {
+                    console.error('Analysis failed:', error);
+                    throw error;
+                }
+            }
+            
+            calculateLiquidityScore(dexData) {
+                if (!dexData?.pairs?.[0]) return 0;
+                
+                const pair = dexData.pairs[0];
+                const liquidity = pair.liquidity?.usd || 0;
+                const locked = pair.liquidity?.locked || false;
+                
+                let score = Math.min(50, Math.log10(liquidity) * 10); // Base score from liquidity amount
+                
+                if (locked) {
+                    score += 30; // Bonus for locked liquidity
+                }
+                
+                // Additional factors
+                if (pair.volume?.h24 > liquidity * 0.1) {
+                    score += 10; // Good volume relative to liquidity
+                }
+                
+                return Math.min(100, Math.max(0, score));
+            }
+            
+            calculateSecurityScore(contractInfo) {
+                if (!contractInfo?.result?.[0]) return 0;
+                
+                const contract = contractInfo.result[0];
+                let score = 0;
+                
+                // Contract verification
+                if (contract.SourceCode && contract.SourceCode !== '') {
+                    score += 40;
+                }
+                
+                // Compiler version (newer is generally better)
+                if (contract.CompilerVersion && contract.CompilerVersion.includes('0.8')) {
+                    score += 20;
+                }
+                
+                // Optimization used
+                if (contract.OptimizationUsed === '1') {
+                    score += 15;
+                }
+                
+                // Not a proxy contract (generally safer)
+                if (!contract.Proxy || contract.Proxy === '0') {
+                    score += 25;
+                }
+                
+                return Math.min(100, score);
+            }
+            
+            calculateOverallScore(scores) {
+                const weights = {
+                    liquidity: 0.35,
+                    security: 0.30,
+                    smartMoney: 0.20,
+                    social: 0.15
+                };
+                
+                let weightedSum = 0;
+                let totalWeight = 0;
+                
+                Object.keys(weights).forEach(factor => {
+                    if (scores[factor] !== undefined) {
+                        weightedSum += scores[factor] * weights[factor];
+                        totalWeight += weights[factor];
+                    }
+                });
+                
+                return totalWeight > 0 ? Math.round(weightedSum / totalWeight) : 0;
+            }
+        }
+
+        // Initialize the application
+        const apiManager = new APIManager();
+        const tokenAnalyzer = new TokenAnalyzer(apiManager);
+
+        // UI Functions
+        function showSetupModal() {
+            document.getElementById('setupModal').style.display = 'flex';
+        }
+
+        function hideSetupModal() {
+            document.getElementById('setupModal').style.display = 'none';
+        }
+
+        function showMessage(message, type = 'info') {
+            const messagesDiv = document.getElementById('modalMessages');
+            const messageClass = type === 'error' ? 'error-message' : 'success-message';
+            messagesDiv.innerHTML = `<div class="${messageClass}">${message}</div>`;
+            
+            setTimeout(() => {
+                messagesDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        function saveAPIKeys() {
+            const config = {
+                dexscreener: document.getElementById('dexscreenerKey').value.trim(),
+                etherscan: document.getElementById('etherscanKey').value.trim(),
+                coingecko: document.getElementById('coingeckoKey').value.trim(),
+                twitter: document.getElementById('twitterToken').value.trim()
+            };
+            
+            // Validate required keys
+            if (!config.dexscreener && !config.etherscan) {
+                showMessage('Please provide at least one API key (DexScreener or Etherscan) for basic functionality.', 'error');
+                return;
+            }
+            
+            apiManager.saveConfiguration(config);
+            showMessage('API configuration saved successfully! You can now analyze tokens with real data.', 'success');
+            
+            // Clear form
+            Object.keys(config).forEach(key => {
+                document.getElementById(key + 'Key').value = '';
+            });
+            
+            setTimeout(() => {
+                hideSetupModal();
+            }, 2000);
+        }
+
+        async function analyzeCoin() {
             const coinAddress = document.getElementById('coinAddress').value.trim();
             
             if (!coinAddress) {
@@ -860,14 +1009,113 @@
             document.getElementById('analyzeBtn').disabled = true;
             document.getElementById('btnText').textContent = 'Analyzing...';
 
-            // Simulate comprehensive analysis
-            setTimeout(() => {
-                performAnalysis(coinAddress);
+            try {
+                const analysis = await tokenAnalyzer.analyzeToken(coinAddress);
+                displayResults(analysis);
+                
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('results').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Analysis failed:', error);
+                
+                // Fall back to demo data if real analysis fails
+                const demoAnalysis = generateDemoAnalysis(coinAddress);
+                displayResults(demoAnalysis);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('results').style.display = 'block';
+                
+                // Show error message
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.insertAdjacentHTML('afterbegin', 
+                    '<div class="error-message">⚠️ Unable to fetch real-time data. Showing demo analysis. Please configure APIs for accurate results.</div>'
+                );
+            } finally {
                 document.getElementById('analyzeBtn').disabled = false;
                 document.getElementById('btnText').textContent = 'Analyze Token';
-            }, 3500);
+            }
+        }
+
+        function displayResults(analysis) {
+            // Update scores
+            document.getElementById('overallScore').textContent = analysis.scores.overall || '--';
+            document.getElementById('confidenceScore').textContent = analysis.confidence || '--';
+            
+            // Update metrics
+            document.getElementById('liquidityScore').textContent = `${analysis.scores.liquidity || 0}/100`;
+            document.getElementById('securityScore').textContent = `${analysis.scores.security || 0}/100`;
+            document.getElementById('smartMoneyScore').textContent = `${analysis.scores.smartMoney || 0}/100`;
+            document.getElementById('socialScore').textContent = `${analysis.scores.social || 0}/100`;
+            
+            // Update descriptions
+            updateDescriptions(analysis);
+            
+            // Update risk level
+            updateRiskLevel(analysis.scores.overall || 0);
+        }
+
+        function updateDescriptions(analysis) {
+            const liquidity = analysis.scores.liquidity || 0;
+            const security = analysis.scores.security || 0;
+            
+            document.getElementById('liquidityDesc').textContent = 
+                liquidity > 80 ? 'Excellent liquidity security detected. Low rug pull risk.' :
+                liquidity > 60 ? 'Good liquidity management with adequate security measures.' :
+                liquidity > 30 ? 'Moderate liquidity concerns. Review tokenomics carefully.' :
+                'High liquidity risk detected. Exercise extreme caution.';
+
+            document.getElementById('securityDesc').textContent = 
+                security > 80 ? 'Contract is verified with strong security features.' :
+                security > 60 ? 'Contract verification confirmed with standard security.' :
+                security > 30 ? 'Basic contract security measures in place.' :
+                'Contract security concerns detected. High risk.';
+
+            document.getElementById('smartMoneyDesc').textContent = 
+                analysis.sources.includes('DexScreener') ? 'Analyzing successful trader wallet activity...' :
+                'Smart money tracking requires API configuration.';
+
+            document.getElementById('socialDesc').textContent = 
+                analysis.sources.includes('Twitter') ? 'Social sentiment analysis in progress...' :
+                'Social analysis requires Twitter API configuration.';
+        }
+
+        function updateRiskLevel(score) {
+            const riskLevel = document.getElementById('riskLevel');
+            
+            if (score >= 75) {
+                riskLevel.textContent = 'Low Risk';
+                riskLevel.style.background = 'rgba(16, 185, 129, 0.2)';
+                riskLevel.style.color = '#10b981';
+            } else if (score >= 50) {
+                riskLevel.textContent = 'Medium Risk';
+                riskLevel.style.background = 'rgba(245, 158, 11, 0.2)';
+                riskLevel.style.color = '#f59e0b';
+            } else {
+                riskLevel.textContent = 'High Risk';
+                riskLevel.style.background = 'rgba(239, 68, 68, 0.2)';
+                riskLevel.style.color = '#ef4444';
+            }
+        }
+
+        function generateDemoAnalysis(contractAddress) {
+            return {
+                contractAddress,
+                timestamp: Date.now(),
+                dataQuality: 20,
+                sources: ['Demo'],
+                scores: {
+                    overall: Math.floor(Math.random() * 40) + 30,
+                    liquidity: Math.floor(Math.random() * 50) + 25,
+                    security: Math.floor(Math.random() * 60) + 20,
+                    smartMoney: Math.floor(Math.random() * 80) + 10,
+                    social: Math.floor(Math.random() * 70) + 15
+                },
+                confidence: 20,
+                details: {
+                    note: 'This is demo data. Configure APIs for real analysis.'
+                }
+            };
         }
 
         function isValidAddress(address) {
@@ -876,313 +1124,33 @@
                    address.length > 20;
         }
 
-        function performAnalysis(address) {
-            const mockData = generateEnhancedMockAnalysis();
-            const learnedData = applyMachineLearning(mockData);
-            
-            updateResults(learnedData);
-            animateProgressBars(learnedData.factors);
-        }
-
-        function generateEnhancedMockAnalysis() {
-            // More sophisticated mock data generation
-            const baseScores = {
-                liquidity: Math.floor(Math.random() * 40) + 60,
-                security: Math.floor(Math.random() * 30) + 70,
-                uniqueness: Math.floor(Math.random() * 50) + 50,
-                smartMoney: Math.floor(Math.random() * 60) + 40,
-                community: Math.floor(Math.random() * 60) + 40,
-                volume: Math.floor(Math.random() * 50) + 50,
-                sentiment: Math.floor(Math.random() * 50) + 50,
-                migration: Math.floor(Math.random() * 100),
-                timeScore: Math.floor(Math.random() * 80) + 20,
-                distribution: Math.floor(Math.random() * 60) + 40
-            };
-
-            const overallScore = Math.floor(
-                Object.values(baseScores).reduce((a, b) => a + b, 0) / Object.keys(baseScores).length
-            );
-
-            return {
-                overall: overallScore,
-                potential: calculatePotentialReturn(overallScore),
-                ...baseScores,
-                factors: baseScores
-            };
-        }
-
-        function calculatePotentialReturn(score) {
-            if (score >= 85) return Math.floor(Math.random() * 20) + 15 + 'x';
-            if (score >= 70) return Math.floor(Math.random() * 15) + 8 + 'x';
-            if (score >= 55) return Math.floor(Math.random() * 10) + 3 + 'x';
-            return Math.floor(Math.random() * 5) + 1 + 'x';
-        }
-
-        function updateResults(data) {
-            // Update main scores
-            document.getElementById('overallScore').textContent = data.overall;
-            document.getElementById('potentialReturn').textContent = data.potential;
-            
-            // Update risk level
-            updateRiskLevel(data.overall);
-            
-            // Update metric cards
-            updateMetricCards(data);
-            
-            // Update factor scores
-            updateFactorScores(data.factors);
-        }
-
-        function updateRiskLevel(score) {
-            const riskLevel = document.getElementById('riskLevel');
-            if (score >= 80) {
-                riskLevel.textContent = 'Low Risk';
-                riskLevel.className = 'risk-level risk-low';
-            } else if (score >= 60) {
-                riskLevel.textContent = 'Medium Risk';
-                riskLevel.className = 'risk-level risk-medium';
-            } else {
-                riskLevel.textContent = 'High Risk';
-                riskLevel.className = 'risk-level risk-high';
-            }
-        }
-
-        function updateMetricCards(data) {
-            document.getElementById('liquidityScore').textContent = `${data.liquidity}/100`;
-            document.getElementById('uniquenessScore').textContent = `${data.uniqueness}/100`;
-            document.getElementById('smartMoneyScore').textContent = `${data.smartMoney}/100`;
-            document.getElementById('riskScore').textContent = `${Math.min(100, 100 - Math.floor((100 - data.overall) * 1.2))}/100`;
-
-            // Update descriptions
-            updateDescriptions(data);
-        }
-
-        function updateDescriptions(data) {
-            document.getElementById('liquidityDesc').textContent = 
-                data.liquidity > 85 ? 'Excellent liquidity security. Funds locked with reputable provider.' :
-                data.liquidity > 70 ? 'Good liquidity management. Standard lock mechanisms detected.' :
-                data.liquidity > 50 ? 'Moderate liquidity security. Some concerns present.' :
-                'High liquidity risk detected. Exercise extreme caution.';
-
-            document.getElementById('uniquenessDesc').textContent = 
-                data.uniqueness > 85 ? 'Highly original concept with exceptional viral potential.' :
-                data.uniqueness > 70 ? 'Good originality with solid meme potential.' :
-                data.uniqueness > 50 ? 'Moderately unique but faces competition.' :
-                'Low uniqueness score. Limited differentiation detected.';
-
-            document.getElementById('smartMoneyDesc').textContent = 
-                data.smartMoney > 85 ? `Exceptional whale activity. ${Math.floor(Math.random() * 15) + 15} pro traders detected.` :
-                data.smartMoney > 70 ? `Strong institutional interest. ${Math.floor(Math.random() * 10) + 8} successful traders.` :
-                data.smartMoney > 50 ? `Moderate smart money participation observed.` :
-                'Limited professional trader interest detected.';
-
-            document.getElementById('riskDesc').textContent = 
-                data.overall > 80 ? 'Low overall risk profile. Strong fundamentals detected.' :
-                data.overall > 65 ? 'Moderate risk level. Standard due diligence recommended.' :
-                data.overall > 45 ? 'Elevated risk factors present. Careful analysis required.' :
-                'High risk investment. Consider smaller position sizes.';
-        }
-
-        function updateFactorScores(factors) {
-            Object.keys(factors).forEach(factor => {
-                const element = document.getElementById(`${factor}FactorScore`);
-                if (element) {
-                    element.textContent = factors[factor];
-                }
-            });
-        }
-
-        function animateProgressBars(factors) {
-            const delays = [300, 500, 700, 900, 1100, 1300, 1500, 1700];
-            const factorNames = ['liquidity', 'security', 'volume', 'distribution', 'community', 'sentiment', 'migration', 'time'];
-            
-            factorNames.forEach((factor, index) => {
-                setTimeout(() => {
-                    const bar = document.getElementById(`${factor}Bar`);
-                    if (bar && factors[factor]) {
-                        bar.style.width = `${factors[factor]}%`;
-                    }
-                }, delays[index]);
-            });
-        }
-
-        function trackOutcome(outcome) {
-            const currentAnalysis = getCurrentAnalysisData();
-            if (!currentAnalysis) {
-                alert('Please analyze a token first before tracking outcome');
-                return;
-            }
-
-            const trackingData = getTrackingFormData();
-            
-            const record = {
-                ...currentAnalysis,
-                ...trackingData,
-                outcome: outcome,
-                timestamp: new Date().toISOString(),
-                coinAddress: document.getElementById('coinAddress').value
-            };
-
-            analysisHistory.push(record);
-            localStorage.setItem('memeAnalysisHistory', JSON.stringify(analysisHistory));
-
-            // Update ML model
-            retrainModel();
-            updateDashboard();
-
-            // Clear form
-            clearTrackingForm();
-
-            const outcomeText = outcome === 'success' ? 'success' : 
-                              outcome === 'failure' ? 'failure' : 'monitoring status';
-            alert(`✅ ${outcomeText.charAt(0).toUpperCase() + outcomeText.slice(1)} recorded! AI model updated with new data point.`);
-        }
-
-        function getCurrentAnalysisData() {
-            try {
-                return {
-                    overall: parseInt(document.getElementById('overallScore').textContent),
-                    liquidity: parseInt(document.getElementById('liquidityFactorScore').textContent),
-                    security: parseInt(document.getElementById('securityFactorScore').textContent),
-                    community: parseInt(document.getElementById('communityFactorScore').textContent),
-                    volume: parseInt(document.getElementById('volumeFactorScore').textContent),
-                    distribution: parseInt(document.getElementById('distributionFactorScore').textContent),
-                    sentiment: parseInt(document.getElementById('sentimentFactorScore').textContent),
-                    migration: parseInt(document.getElementById('migrationFactorScore').textContent),
-                    timeScore: parseInt(document.getElementById('timeFactorScore').textContent)
-                };
-            } catch (e) {
-                return null;
-            }
-        }
-
-        function getTrackingFormData() {
-            return {
-                daysSinceLaunch: parseInt(document.getElementById('daysSinceLaunch').value) || null,
-                marketCap: document.getElementById('marketCap').value.trim() || null,
-                migrationStatus: document.getElementById('migrationStatus').value || null,
-                performanceChange: document.getElementById('performanceChange').value.trim() || null
-            };
-        }
-
-        function clearTrackingForm() {
-            document.getElementById('daysSinceLaunch').value = '';
-            document.getElementById('marketCap').value = '';
-            document.getElementById('migrationStatus').value = '';
-            document.getElementById('performanceChange').value = '';
-        }
-
-        function retrainModel() {
-            const successes = analysisHistory.filter(h => h.outcome === 'success');
-            const failures = analysisHistory.filter(h => h.outcome === 'failure');
-
-            if (successes.length < 3 || failures.length < 3) return;
-
-            const successAvgs = calculateAverageFactors(successes);
-            const failureAvgs = calculateAverageFactors(failures);
-
-            const factors = ['liquidity', 'security', 'community', 'volume', 'distribution', 'sentiment', 'migration', 'timeScore'];
-            
-            factors.forEach(factor => {
-                const successValue = successAvgs[factor] || 0;
-                const failureValue = failureAvgs[factor] || 0;
-                const importance = Math.abs(successValue - failureValue) / 100;
-                
-                modelWeights[factor] = importance;
-            });
-
-            localStorage.setItem('memeModelWeights', JSON.stringify(modelWeights));
-            
-            // Update performance metrics
-            updatePerformanceMetrics();
-        }
-
-        function calculateAverageFactors(records) {
-            if (records.length === 0) return {};
-            
-            const factors = ['liquidity', 'security', 'community', 'volume', 'distribution', 'sentiment', 'migration', 'timeScore'];
-            const averages = {};
-
-            factors.forEach(factor => {
-                const sum = records.reduce((acc, record) => acc + (record[factor] || 0), 0);
-                averages[factor] = sum / records.length;
-            });
-
-            return averages;
-        }
-
-        function updatePerformanceMetrics() {
-            const total = analysisHistory.length;
-            const successes = analysisHistory.filter(h => h.outcome === 'success').length;
-            const accuracy = total > 0 ? Math.round((successes / total) * 100) : 0;
-            
-            // Calculate average return for successful picks
-            const successfulTrades = analysisHistory.filter(h => 
-                h.outcome === 'success' && h.performanceChange
-            );
-            
-            let avgReturn = 0;
-            if (successfulTrades.length > 0) {
-                const returns = successfulTrades.map(trade => {
-                    const change = trade.performanceChange.replace(/[^\d.-]/g, '');
-                    return parseFloat(change) || 0;
-                });
-                avgReturn = returns.reduce((a, b) => a + b, 0) / returns.length / 100;
-            }
-
-            performanceMetrics = {
-                totalPredictions: total,
-                successfulPicks: successes,
-                accuracyRate: accuracy,
-                avgReturn: avgReturn
-            };
-
-            localStorage.setItem('memePerformanceMetrics', JSON.stringify(performanceMetrics));
-        }
-
-        function updateDashboard() {
-            updatePerformanceMetrics();
-            
-            document.getElementById('totalPredictions').textContent = performanceMetrics.totalPredictions || 0;
-            document.getElementById('accuracyRate').textContent = (performanceMetrics.accuracyRate || 0) + '%';
-            document.getElementById('successfulPicks').textContent = performanceMetrics.successfulPicks || 0;
-            document.getElementById('avgReturn').textContent = 
-                performanceMetrics.avgReturn ? (performanceMetrics.avgReturn.toFixed(1) + 'x') : '0x';
-        }
-
-        function applyMachineLearning(mockData) {
-            if (Object.keys(modelWeights).length === 0) {
-                return mockData;
-            }
-
-            const factors = ['liquidity', 'security', 'community', 'volume', 'distribution', 'sentiment', 'migration', 'timeScore'];
-            let weightedScore = 0;
-            let totalWeight = 0;
-
-            factors.forEach(factor => {
-                const weight = modelWeights[factor] || 0.1;
-                const score = mockData.factors[factor] || 0;
-                weightedScore += score * weight;
-                totalWeight += weight;
-            });
-
-            if (totalWeight > 0) {
-                mockData.overall = Math.round(weightedScore / totalWeight);
-                mockData.potential = calculatePotentialReturn(mockData.overall);
-            }
-
-            return mockData;
-        }
-
-        // Initialize dashboard on load
+        // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
-            updateDashboard();
+            // Check if APIs are configured on load
+            const hasAPIs = Object.values(apiManager.apis).some(api => api.status === 'connected');
+            
+            if (!hasAPIs) {
+                // Show a helpful message for first-time users
+                setTimeout(() => {
+                    const intro = confirm('Welcome to Meme Coin Analyzer Pro! To get accurate analysis with real blockchain data, you\'ll need to configure API keys. Would you like to set them up now? (Click Cancel to try with demo data first)');
+                    if (intro) {
+                        showSetupModal();
+                    }
+                }, 1000);
+            }
         });
 
         // Enter key support
         document.getElementById('coinAddress').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 analyzeCoin();
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('setupModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideSetupModal();
             }
         });
     </script>
