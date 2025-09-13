@@ -1,0 +1,134 @@
+{
+  "name": "Meme Coin Analyzer Pro",
+  "short_name": "CoinAnalyzer",
+  "description": "Professional-grade risk assessment and performance tracking for meme coins on pump.fun and DEX platforms",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#2563eb",
+  "background_color": "#f8fafc",
+  "categories": ["finance", "productivity", "utilities"],
+  "lang": "en",
+  "scope": "/",
+  
+  "icons": [
+    {
+      "src": "assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "assets/screenshots/desktop-main.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Main analysis dashboard on desktop"
+    },
+    {
+      "src": "assets/screenshots/mobile-analysis.png", 
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Token analysis on mobile"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Quick Analysis",
+      "short_name": "Analyze",
+      "description": "Quickly analyze a token",
+      "url": "/?action=analyze",
+      "icons": [
+        {
+          "src": "assets/icons/shortcut-analyze.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "API Setup",
+      "short_name": "Setup",
+      "description": "Configure API keys",
+      "url": "/?action=setup",
+      "icons": [
+        {
+          "src": "assets/icons/shortcut-setup.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+memeanalyzer",
+      "url": "/?token=%s"
+    }
+  ],
+  
+  "prefer_related_applications": false,
+  "related_applications": [],
+  
+  "features": [
+    "offline-support",
+    "background-sync", 
+    "push-notifications",
+    "installable"
+  ],
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}
