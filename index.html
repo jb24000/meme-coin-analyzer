@@ -2010,7 +2010,6 @@ function displayResults(analysis) {
     displayEnhancedResults(analysis);
 
     // --- New Enhancements (safe extensions) ---
-
     // 🔴 Red Flags
     if (analysis.redFlags && Array.isArray(analysis.redFlags)) {
         const redFlagsContainer = document.getElementById('redFlagsList');
@@ -2025,7 +2024,7 @@ function displayResults(analysis) {
         }
     }
 
-}
+} // ✅ FINAL closing brace of the function
 
     // 🔐 Security Checks
     if (analysis.security) {
