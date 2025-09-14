@@ -1920,7 +1920,6 @@ async function analyzeCoin() {
         alert('Please enter a Solana token contract address');
         return;
     }
-
     if (!isValidSolanaAddress(coinAddress)) {
         alert('Please enter a valid Solana contract address');
         return;
@@ -1936,9 +1935,17 @@ async function analyzeCoin() {
         const analysis = await tokenAnalyzer.analyzeToken(coinAddress);
         
         // Run enhanced analysis
-        await runEnhancedAnalysis(analysis);
+        try {
+            analysis.security = await securityAnalyzer.analyzeTokenSecurity(analysis.contractAddress, analysis.details);
+            analysis.social = await socialAnalyzer.analyzeSocialSentiment(analysis.contractAddress);
+            analysis.whale = await whaleTracker.analyzeWhaleActivity(analysis.contractAddress, analysis.details.holders);
+            analysis.pumpfun = await pumpFunAnalyzer.analyzePumpFunStatus(analysis.contractAddress, analysis.details.dexData);
+        } catch (enhancedError) {
+            console.log('Enhanced analysis failed, using defaults:', enhancedError);
+        }
         
         displayResults(analysis);
+        displayEnhancedResults(analysis);
         
         document.getElementById('loading').style.display = 'none';
         document.getElementById('results').style.display = 'block';
@@ -1947,26 +1954,20 @@ async function analyzeCoin() {
         console.error('Analysis failed:', error);
         
         const demoAnalysis = generateSolanaDemoAnalysis(coinAddress);
-        
-        // Run enhanced analysis on demo data too
-        await runEnhancedAnalysis(demoAnalysis);
-        
         displayResults(demoAnalysis);
         
         document.getElementById('loading').style.display = 'none';
         document.getElementById('results').style.display = 'block';
         
-        // Show error message
         const resultsDiv = document.getElementById('results');
         resultsDiv.insertAdjacentHTML('afterbegin', 
-            '<div class="error-message">⚠️ Unable to fetch real-time Solana data. Showing demo analysis. Please configure Solscan API for accurate results.</div>'
+            '<div class="error-message">⚠️ Unable to fetch real-time Solana data. Showing demo analysis.</div>'
         );
     } finally {
         document.getElementById('analyzeBtn').disabled = false;
         document.getElementById('btnText').textContent = 'Analyze Token';
     }
 }
-
 // Enhanced analysis integration function
 const runEnhancedAnalysis = async (analysis) => {
     try {
