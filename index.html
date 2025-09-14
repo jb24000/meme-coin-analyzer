@@ -1979,6 +1979,157 @@
 
     // --- New Enhancements (safe extensions) ---
 
+        // 🔴 Red Flags
+    if (analysis.redFlags && Array.isArray(analysis.redFlags)) {
+        const redFlagsContainer = document.getElementById('redFlagsList');
+        if (redFlagsContainer) {
+            redFlagsContainer.innerHTML = '';
+            analysis.redFlags.forEach(flag => {
+                const li = document.createElement('li');
+                li.textContent = flag;
+                li.classList.add('red-flag');
+                redFlagsContainer.appendChild(li);
+            });
+        }
+    }
+
+    // 🔐 Security Checks
+    if (analysis.security) {
+        if (document.getElementById('isMintAuthorityRevoked')) {
+            document.getElementById('isMintAuthorityRevoked').textContent =
+                analysis.security.mintAuthorityRevoked ? '✅ Yes' : '❌ No';
+        }
+        if (document.getElementById('isLiquidityLocked')) {
+            document.getElementById('isLiquidityLocked').textContent =
+                analysis.security.liquidityLocked ? '✅ Locked' : '⚠️ Not Locked';
+        }
+        if (document.getElementById('isFreezeAuthorityDisabled')) {
+            document.getElementById('isFreezeAuthorityDisabled').textContent =
+                analysis.security.freezeAuthorityDisabled ? '✅ Disabled' : '⚠️ Enabled';
+        }
+    }
+
+    // 🌍 Social Signals
+    if (analysis.social) {
+        if (document.getElementById('twitterFollowers')) {
+            document.getElementById('twitterFollowers').textContent =
+                analysis.social.twitterFollowers || '--';
+        }
+        if (document.getElementById('telegramMembers')) {
+            document.getElementById('telegramMembers').textContent =
+                analysis.social.telegramMembers || '--';
+        }
+    }
+
+    // 📈 Market Data
+    if (analysis.market) {
+        if (document.getElementById('priceUsd')) {
+            document.getElementById('priceUsd').textContent =
+                analysis.market.priceUsd ? `$${analysis.market.priceUsd}` : '--';
+        }
+        if (document.getElementById('holdersCount')) {
+            document.getElementById('holdersCount').textContent =
+                analysis.market.holdersCount || '--';
+        }
+    }
+Just add this block right after your updateRiskLevel line and close the function with }.
+
+Relevant Posts
+0
+
+No tweets found
+
+
+meme-coin-analyzer/:2076  Uncaught SyntaxError: Unexpected end of input (at meme-coin-analyzer/:2076:5)
+Relevant Posts
+0
+
+No tweets found
+
+
+RouteLLM
+Routing to GPT-5
+Ahh 👍 thanks for giving me the exact error.
+
+Unexpected end of input almost always means you’re missing a closing } or ) somewhere.
+
+Looking at your last posted displayResults snippet:
+
+javascript
+Copy
+function displayResults(analysis) {
+    // --- Existing code ---
+    ...
+    updateRiskLevel(analysis.scores.overall || 0);
+Notice that you didn’t close the function with a }.
+
+Then I gave you a chunk to paste after that. If you didn’t add the final closing brace at the end, your file will end without finishing the function → hence the error on the last line (line 2076).
+
+✅ Correct fixed structure:
+
+javascript
+Copy
+function displayResults(analysis) {
+    // --- Existing code (leave as-is) ---
+
+    // Update scores
+    document.getElementById('overallScore').textContent = analysis.scores.overall || '--';
+    document.getElementById('confidenceScore').textContent = analysis.confidence || '--';
+    
+    // Update metrics
+    document.getElementById('liquidityScore').textContent = `${analysis.scores.liquidity || 0}/100`;
+    document.getElementById('migrationScore').textContent = `${analysis.scores.migration || 0}/100`;
+    document.getElementById('distributionScore').textContent = `${analysis.scores.distribution || 0}/100`;
+    document.getElementById('activityScore').textContent = `${analysis.scores.activity || 0}/100`;
+    
+    // Update descriptions
+    updateSolanaDescriptions(analysis);
+    
+    // Update risk level
+    updateRiskLevel(analysis.scores.overall || 0);
+
+    // --- New Enhancements (safe) ---
+    if (analysis.redFlags && Array.isArray(analysis.redFlags)) {
+        const redFlagsContainer = document.getElementById('redFlagsList');
+        if (redFlagsContainer) {
+            redFlagsContainer.innerHTML = '';
+            analysis.redFlags.forEach(flag => {
+                const li = document.createElement('li');
+                li.textContent = flag;
+                li.classList.add('red-flag');
+                redFlagsContainer.appendChild(li);
+            });
+        }
+    }
+
+    if (analysis.security) {
+        const mintEl = document.getElementById('isMintAuthorityRevoked');
+        if (mintEl) mintEl.textContent = analysis.security.mintAuthorityRevoked ? '✅ Yes' : '❌ No';
+
+        const liqEl = document.getElementById('isLiquidityLocked');
+        if (liqEl) liqEl.textContent = analysis.security.liquidityLocked ? '✅ Locked' : '⚠️ Not Locked';
+
+        const freezeEl = document.getElementById('isFreezeAuthorityDisabled');
+        if (freezeEl) freezeEl.textContent = analysis.security.freezeAuthorityDisabled ? '✅ Disabled' : '⚠️ Enabled';
+    }
+
+    if (analysis.social) {
+        const tw = document.getElementById('twitterFollowers');
+        if (tw) tw.textContent = analysis.social.twitterFollowers || '--';
+
+        const tg = document.getElementById('telegramMembers');
+        if (tg) tg.textContent = analysis.social.telegramMembers || '--';
+    }
+
+    if (analysis.market) {
+        const priceEl = document.getElementById('priceUsd');
+        if (priceEl) priceEl.textContent = analysis.market.priceUsd ? `$${analysis.market.priceUsd}` : '--';
+
+        const holders = document.getElementById('holdersCount');
+        if (holders) holders.textContent = analysis.market.holdersCount || '--';
+    }
+}
+
         function updateSolanaDescriptions(analysis) {
             const liquidity = analysis.scores.liquidity || 0;
             const migration = analysis.scores.migration || 50;
