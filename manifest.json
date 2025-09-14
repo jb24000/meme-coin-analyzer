@@ -3,14 +3,14 @@
   "short_name": "CoinAnalyzer",
   "description": "Professional-grade risk assessment and performance tracking for meme coins on pump.fun and DEX platforms",
   "version": "1.0.0",
-  "start_url": "/",
+  "start_url": "/meme-coin-analyzer/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#2563eb",
   "background_color": "#f8fafc",
   "categories": ["finance", "productivity", "utilities"],
   "lang": "en",
-  "scope": "/",
+  "scope": "/meme-coin-analyzer/",
   
   "icons": [
     {
