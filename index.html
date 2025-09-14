@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="Professional-grade risk assessment and performance tracking for Solana meme coins on pump.fun and DEX platforms">
+    <meta name="keywords" content="solana, meme coin, crypto analysis, pump.fun, DeFi, token analysis, blockchain">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SolanaAnalyzer">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/icon-32x32.png">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-180x180.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
     <title>Solana Meme Coin Analyzer Pro</title>
     <style>
         * {
@@ -187,6 +204,60 @@
             transform: none;
         }
 
+        .api-integration-section {
+            background: var(--bg-gray);
+            border: 1px solid var(--border-gray);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 32px;
+        }
+
+        .integration-title {
+            color: var(--dark-gray);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .api-card {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .api-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .api-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 4px;
+        }
+
+        .api-status-text {
+            font-size: 0.75rem;
+            color: var(--light-gray);
+        }
+
         .results {
             display: none;
             animation: fadeInUp 0.6s ease;
@@ -297,60 +368,6 @@
             color: var(--light-gray);
             font-size: 0.875rem;
             line-height: 1.5;
-        }
-
-        .api-integration-section {
-            background: var(--bg-gray);
-            border: 1px solid var(--border-gray);
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 32px;
-        }
-
-        .integration-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--dark-gray);
-            margin-bottom: 16px;
-        }
-
-        .api-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .api-card {
-            background: var(--white);
-            border: 1px solid var(--border-gray);
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .api-logo {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            margin: 0 auto 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-blue);
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .api-name {
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 4px;
-        }
-
-        .api-status-text {
-            font-size: 0.75rem;
-            color: var(--light-gray);
         }
 
         .setup-modal {
@@ -523,8 +540,8 @@
     <div class="container">
         <div class="header">
             <div class="header-content">
-                <h1>🎯 Meme Coin Analyzer Pro</h1>
-                <p>Professional-grade risk assessment with real-time blockchain data</p>
+                <h1>🎯 Solana Meme Coin Analyzer Pro</h1>
+                <p>Professional-grade risk assessment for Solana tokens, pump.fun, and Raydium DEX</p>
             </div>
         </div>
 
@@ -548,14 +565,14 @@
                         <div class="api-status-text" id="dexscreener-status">Not connected</div>
                     </div>
                     <div class="api-card">
-                        <div class="api-logo">ES</div>
-                        <div class="api-name">Etherscan</div>
-                        <div class="api-status-text" id="etherscan-status">Not connected</div>
+                        <div class="api-logo">SS</div>
+                        <div class="api-name">Solscan</div>
+                        <div class="api-status-text" id="solscan-status">Not connected</div>
                     </div>
                     <div class="api-card">
-                        <div class="api-logo">CG</div>
-                        <div class="api-name">CoinGecko</div>
-                        <div class="api-status-text" id="coingecko-status">Not connected</div>
+                        <div class="api-logo">JP</div>
+                        <div class="api-name">Jupiter</div>
+                        <div class="api-status-text" id="jupiter-status">Connected</div>
                     </div>
                     <div class="api-card">
                         <div class="api-logo">TW</div>
@@ -567,7 +584,7 @@
 
             <div class="input-section">
                 <div class="input-group">
-                    <input type="text" id="coinAddress" placeholder="Enter token contract address..." />
+                    <input type="text" id="coinAddress" placeholder="Enter Solana token contract address (e.g., 4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R)" />
                     <button class="analyze-btn" id="analyzeBtn" onclick="analyzeCoin()">
                         <span id="btnText">Analyze Token</span>
                     </button>
@@ -576,7 +593,7 @@
 
             <div id="loading" class="loading" style="display: none;">
                 <div class="spinner"></div>
-                <p>Fetching real-time blockchain data and analyzing token metrics...</p>
+                <p>Analyzing Solana token data, pump.fun status, and Raydium/Orca liquidity...</p>
             </div>
 
             <div id="results" class="results">
@@ -608,33 +625,33 @@
                     <div class="metric-card">
                         <div class="metric-header">
                             <div class="metric-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success-green);">🛡️</div>
-                            <div class="metric-title">Contract Security</div>
+                            <div class="metric-title">Migration Status</div>
                         </div>
-                        <div class="metric-value" id="securityScore">--/100</div>
-                        <div class="metric-description" id="securityDesc">
-                            Checking contract verification and security features...
+                        <div class="metric-value" id="migrationScore">--/100</div>
+                        <div class="metric-description" id="migrationDesc">
+                            Checking pump.fun graduation and DEX migration...
                         </div>
                     </div>
 
                     <div class="metric-card">
                         <div class="metric-header">
                             <div class="metric-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning-orange);">👑</div>
-                            <div class="metric-title">Smart Money Activity</div>
+                            <div class="metric-title">Holder Distribution</div>
                         </div>
-                        <div class="metric-value" id="smartMoneyScore">--/100</div>
-                        <div class="metric-description" id="smartMoneyDesc">
-                            Tracking successful trader wallet activity...
+                        <div class="metric-value" id="distributionScore">--/100</div>
+                        <div class="metric-description" id="distributionDesc">
+                            Analyzing Solana wallet holder patterns...
                         </div>
                     </div>
 
                     <div class="metric-card">
                         <div class="metric-header">
                             <div class="metric-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">📈</div>
-                            <div class="metric-title">Social Sentiment</div>
+                            <div class="metric-title">Activity Score</div>
                         </div>
-                        <div class="metric-value" id="socialScore">--/100</div>
-                        <div class="metric-description" id="socialDesc">
-                            Analyzing social media sentiment and engagement...
+                        <div class="metric-value" id="activityScore">--/100</div>
+                        <div class="metric-description" id="activityDesc">
+                            Tracking recent transactions and trading volume...
                         </div>
                     </div>
                 </div>
@@ -646,7 +663,7 @@
 
             <div class="disclaimer">
                 <h3>⚠️ Professional Disclaimer</h3>
-                <p>This tool provides analysis for educational purposes only. Cryptocurrency investments are extremely high-risk. Always do your own research and never invest more than you can afford to lose completely. The analysis may contain errors and should not be considered financial advice.</p>
+                <p>This tool provides analysis for educational purposes only. Solana meme coins and pump.fun tokens are extremely high-risk investments with potential for total loss. Many tokens fail to migrate from pump.fun or lose 90%+ of their value. Always do your own research and never invest more than you can afford to lose completely.</p>
             </div>
         </div>
     </div>
@@ -663,18 +680,13 @@
             
             <div class="api-setup-form">
                 <div class="form-group">
-                    <label class="form-label">DexScreener API Key</label>
-                    <input type="password" class="form-input" id="dexscreenerKey" placeholder="Get free key from dexscreener.com/api">
+                    <label class="form-label">DexScreener API Key (Optional)</label>
+                    <input type="password" class="form-input" id="dexscreenerKey" placeholder="Optional - works without API key">
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">Etherscan API Key</label>
-                    <input type="password" class="form-input" id="etherscanKey" placeholder="Get free key from etherscan.io/apis">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">CoinGecko API Key (Optional)</label>
-                    <input type="password" class="form-input" id="coingeckoKey" placeholder="Optional - for enhanced market data">
+                    <label class="form-label">Solscan API Key</label>
+                    <input type="password" class="form-input" id="solscanKey" placeholder="Get free key from pro.solscan.io">
                 </div>
                 
                 <div class="form-group">
@@ -686,31 +698,36 @@
             </div>
             
             <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-gray);">
-                <h4 style="margin-bottom: 12px; color: var(--dark-gray);">📚 How to get API keys:</h4>
+                <h4 style="margin-bottom: 12px; color: var(--dark-gray);">📚 Solana API Keys Guide:</h4>
                 <ul style="color: var(--light-gray); font-size: 0.875rem; line-height: 1.5;">
-                    <li><strong>DexScreener:</strong> Visit <a href="https://dexscreener.com/api" target="_blank">dexscreener.com/api</a> - Free tier: 300 req/min</li>
-                    <li><strong>Etherscan:</strong> Visit <a href="https://etherscan.io/apis" target="_blank">etherscan.io/apis</a> - Free tier: 5 req/sec</li>
-                    <li><strong>CoinGecko:</strong> Visit <a href="https://www.coingecko.com/en/api/pricing" target="_blank">coingecko.com/api</a> - Free tier available</li>
-                    <li><strong>Twitter:</strong> Visit <a href="https://developer.twitter.com/" target="_blank">developer.twitter.com</a> - Free tier available</li>
+                    <li><strong>DexScreener:</strong> Works without API key - automatically included</li>
+                    <li><strong>Solscan:</strong> Visit <a href="https://pro.solscan.io" target="_blank">pro.solscan.io</a> - Free tier available</li>
+                    <li><strong>Jupiter:</strong> No API key needed - automatically included</li>
+                    <li><strong>Twitter:</strong> Visit <a href="https://developer.twitter.com/" target="_blank">developer.twitter.com</a> - For social sentiment</li>
                 </ul>
+                <div style="margin-top: 16px; padding: 12px; background: #eff6ff; border-radius: 8px; border: 1px solid #bfdbfe;">
+                    <p style="color: #1e40af; font-size: 0.875rem;">
+                        💡 <strong>Solana Focus:</strong> This analyzer is optimized for Solana meme coins, pump.fun tokens, and Raydium/Orca DEX data.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
-    <a href="https://github.com/yourusername/meme-coin-analyzer" class="github-link" target="_blank">
+    <a href="https://github.com/yourusername/solana-meme-coin-analyzer" class="github-link" target="_blank">
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
         </svg>
     </a>
 
     <script>
-        // API Configuration Management
+        // API Configuration Management for Solana
         class APIManager {
             constructor() {
                 this.apis = {
-                    dexscreener: { key: null, status: 'disconnected' },
-                    etherscan: { key: null, status: 'disconnected' },
-                    coingecko: { key: null, status: 'disconnected' },
+                    dexscreener: { key: null, status: 'connected' }, // Works without key
+                    solscan: { key: null, status: 'disconnected' },
+                    jupiter: { key: null, status: 'connected' }, // Always free
                     twitter: { key: null, status: 'disconnected' }
                 };
                 this.loadConfiguration();
@@ -718,7 +735,7 @@
             }
             
             loadConfiguration() {
-                const config = JSON.parse(localStorage.getItem('apiConfig') || '{}');
+                const config = JSON.parse(localStorage.getItem('solanaApiConfig') || '{}');
                 Object.keys(this.apis).forEach(api => {
                     if (config[api]) {
                         this.apis[api].key = config[api];
@@ -736,7 +753,7 @@
                         config[api] = newConfig[api];
                     }
                 });
-                localStorage.setItem('apiConfig', JSON.stringify(config));
+                localStorage.setItem('solanaApiConfig', JSON.stringify(config));
                 this.updateStatusDisplay();
             }
             
@@ -745,12 +762,12 @@
                 const statusDot = document.getElementById('apiStatusDot');
                 const statusText = document.getElementById('apiStatusText');
                 
-                if (connectedAPIs > 0) {
+                if (connectedAPIs >= 2) { // DexScreener + Jupiter are always connected
                     statusDot.classList.add('connected');
-                    statusText.textContent = `${connectedAPIs} API${connectedAPIs > 1 ? 's' : ''} connected - Real data available`;
+                    statusText.textContent = `${connectedAPIs} Solana API${connectedAPIs > 1 ? 's' : ''} connected - Real data available`;
                 } else {
                     statusDot.classList.remove('connected');
-                    statusText.textContent = 'APIs not configured - Using demo data';
+                    statusText.textContent = 'Basic APIs connected - Add Solscan for enhanced analysis';
                 }
                 
                 // Update individual API status
@@ -772,158 +789,238 @@
             }
         }
 
-        // Real API Integration Classes
-        class DexScreenerAPI {
-            constructor(apiKey) {
+        // Solana API Integration Classes
+        class DexScreenerSolanaAPI {
+            constructor(apiKey = null) {
                 this.apiKey = apiKey;
                 this.baseUrl = 'https://api.dexscreener.com/latest';
             }
             
             async getTokenData(contractAddress) {
-                const response = await fetch(`${this.baseUrl}/dex/tokens/${contractAddress}`, {
-                    headers: this.apiKey ? { 'X-API-Key': this.apiKey } : {}
-                });
+                const response = await fetch(`${this.baseUrl}/dex/tokens/${contractAddress}`);
                 
                 if (!response.ok) {
                     throw new Error(`DexScreener API error: ${response.status}`);
                 }
                 
-                return await response.json();
+                const data = await response.json();
+                
+                // Filter for Solana pairs only
+                if (data.pairs) {
+                    data.pairs = data.pairs.filter(pair => 
+                        pair.chainId === 'solana' || 
+                        pair.dexId === 'raydium' || 
+                        pair.dexId === 'orca' ||
+                        pair.dexId === 'pump'
+                    );
+                }
+                
+                return data;
+            }
+            
+            detectPumpFunStatus(pairs) {
+                if (!pairs || pairs.length === 0) return 'unknown';
+                
+                const hasPumpFun = pairs.some(p => p.dexId === 'pump' || p.url?.includes('pump.fun'));
+                const hasRaydium = pairs.some(p => p.dexId === 'raydium');
+                const hasOrca = pairs.some(p => p.dexId === 'orca');
+                
+                if (hasPumpFun && (hasRaydium || hasOrca)) return 'migrated';
+                if (hasPumpFun) return 'pump_fun';
+                if (hasRaydium || hasOrca) return 'graduated';
+                return 'other';
             }
         }
 
-        class EtherscanAPI {
+        class SolscanAPI {
             constructor(apiKey) {
                 this.apiKey = apiKey;
-                this.baseUrl = 'https://api.etherscan.io/api';
-            }
-            
-            async getContractInfo(contractAddress) {
-                const response = await fetch(`${this.baseUrl}?module=contract&action=getsourcecode&address=${contractAddress}&apikey=${this.apiKey}`);
-                
-                if (!response.ok) {
-                    throw new Error(`Etherscan API error: ${response.status}`);
-                }
-                
-                return await response.json();
+                this.baseUrl = 'https://pro-api.solscan.io/v1.0';
             }
             
             async getTokenInfo(contractAddress) {
-                const response = await fetch(`${this.baseUrl}?module=token&action=tokeninfo&contractaddress=${contractAddress}&apikey=${this.apiKey}`);
+                if (!this.apiKey) return null;
+                
+                const response = await fetch(`${this.baseUrl}/token/meta?tokenAddress=${contractAddress}`, {
+                    headers: {
+                        'X-API-Key': this.apiKey,
+                        'Content-Type': 'application/json'
+                    }
+                });
                 
                 if (!response.ok) {
-                    throw new Error(`Etherscan API error: ${response.status}`);
+                    throw new Error(`Solscan API error: ${response.status}`);
+                }
+                
+                return await response.json();
+            }
+            
+            async getTokenHolders(contractAddress) {
+                if (!this.apiKey) return null;
+                
+                const response = await fetch(`${this.baseUrl}/token/holders?tokenAddress=${contractAddress}&limit=100`, {
+                    headers: {
+                        'X-API-Key': this.apiKey,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Solscan API error: ${response.status}`);
                 }
                 
                 return await response.json();
             }
         }
 
-        // Advanced Analysis Engine
-        class TokenAnalyzer {
+        class JupiterAPI {
+            constructor() {
+                this.baseUrl = 'https://price.jup.ag/v4';
+            }
+            
+            async getTokenPrice(contractAddress) {
+                try {
+                    const response = await fetch(`${this.baseUrl}/price?ids=${contractAddress}`);
+                    if (!response.ok) return null;
+                    return await response.json();
+                } catch (error) {
+                    console.warn('Jupiter price unavailable:', error);
+                    return null;
+                }
+            }
+        }
+
+        // Solana Token Analyzer
+        class SolanaTokenAnalyzer {
             constructor(apiManager) {
                 this.apiManager = apiManager;
-                this.dexScreener = new DexScreenerAPI(apiManager.getKey('dexscreener'));
-                this.etherscan = new EtherscanAPI(apiManager.getKey('etherscan'));
+                this.dexScreener = new DexScreenerSolanaAPI();
+                this.solscan = new SolscanAPI(apiManager.getKey('solscan'));
+                this.jupiter = new JupiterAPI();
             }
             
             async analyzeToken(contractAddress) {
                 const analysis = {
                     contractAddress,
                     timestamp: Date.now(),
-                    dataQuality: 0,
-                    sources: [],
+                    dataQuality: 20, // Base quality for Solana analysis
+                    sources: ['Solana'],
                     scores: {},
                     details: {}
                 };
                 
                 try {
-                    // DexScreener Analysis
-                    if (this.apiManager.isConnected('dexscreener')) {
-                        const dexData = await this.dexScreener.getTokenData(contractAddress);
-                        analysis.sources.push('DexScreener');
-                        analysis.details.dexData = dexData;
-                        analysis.scores.liquidity = this.calculateLiquidityScore(dexData);
-                        analysis.dataQuality += 30;
+                    // DexScreener Analysis (always available)
+                    const dexData = await this.dexScreener.getTokenData(contractAddress);
+                    analysis.sources.push('DexScreener');
+                    analysis.details.dexData = dexData;
+                    analysis.scores.liquidity = this.calculateLiquidityScore(dexData);
+                    analysis.scores.migration = this.calculateMigrationScore(dexData.pairs);
+                    analysis.dataQuality += 40;
+                    
+                    // Jupiter Price Data (always available)
+                    const jupiterPrice = await this.jupiter.getTokenPrice(contractAddress);
+                    if (jupiterPrice) {
+                        analysis.sources.push('Jupiter');
+                        analysis.details.jupiterPrice = jupiterPrice;
+                        analysis.dataQuality += 15;
                     }
                     
-                    // Etherscan Analysis
-                    if (this.apiManager.isConnected('etherscan')) {
-                        const contractInfo = await this.etherscan.getContractInfo(contractAddress);
-                        analysis.sources.push('Etherscan');
-                        analysis.details.contractInfo = contractInfo;
-                        analysis.scores.security = this.calculateSecurityScore(contractInfo);
-                        analysis.dataQuality += 25;
+                    // Solscan Analysis (if API key available)
+                    if (this.apiManager.isConnected('solscan')) {
+                        try {
+                            const holders = await this.solscan.getTokenHolders(contractAddress);
+                            if (holders) {
+                                analysis.sources.push('Solscan');
+                                analysis.details.holders = holders;
+                                analysis.scores.distribution = this.calculateDistributionScore(holders);
+                                analysis.dataQuality += 25;
+                            }
+                        } catch (error) {
+                            console.warn('Solscan data unavailable:', error);
+                        }
                     }
                     
                     // Calculate composite scores
+                    analysis.scores.activity = this.calculateActivityScore(dexData);
                     analysis.scores.overall = this.calculateOverallScore(analysis.scores);
                     analysis.confidence = Math.min(100, analysis.dataQuality);
                     
                     return analysis;
                     
                 } catch (error) {
-                    console.error('Analysis failed:', error);
+                    console.error('Solana token analysis failed:', error);
                     throw error;
                 }
             }
             
             calculateLiquidityScore(dexData) {
-                if (!dexData?.pairs?.[0]) return 0;
+                if (!dexData?.pairs?.[0]) return 25;
                 
                 const pair = dexData.pairs[0];
                 const liquidity = pair.liquidity?.usd || 0;
-                const locked = pair.liquidity?.locked || false;
                 
-                let score = Math.min(50, Math.log10(liquidity) * 10); // Base score from liquidity amount
+                let score = Math.min(40, Math.log10(liquidity + 1) * 8);
                 
-                if (locked) {
-                    score += 30; // Bonus for locked liquidity
-                }
-                
-                // Additional factors
-                if (pair.volume?.h24 > liquidity * 0.1) {
-                    score += 10; // Good volume relative to liquidity
-                }
+                // Solana DEX bonuses
+                if (pair.dexId === 'raydium') score += 25;
+                if (pair.dexId === 'orca') score += 20;
+                if (pair.volume?.h24 > liquidity * 0.05) score += 15;
+                if (liquidity > 10000) score += 10;
                 
                 return Math.min(100, Math.max(0, score));
             }
             
-            calculateSecurityScore(contractInfo) {
-                if (!contractInfo?.result?.[0]) return 0;
+            calculateMigrationScore(pairs) {
+                if (!pairs || pairs.length === 0) return 50;
                 
-                const contract = contractInfo.result[0];
-                let score = 0;
+                const status = this.dexScreener.detectPumpFunStatus(pairs);
                 
-                // Contract verification
-                if (contract.SourceCode && contract.SourceCode !== '') {
-                    score += 40;
+                switch (status) {
+                    case 'migrated': return 90;
+                    case 'graduated': return 85;
+                    case 'pump_fun': return 35;
+                    case 'other': return 70;
+                    default: return 50;
                 }
+            }
+            
+            calculateDistributionScore(holders) {
+                if (!holders?.data) return 50;
                 
-                // Compiler version (newer is generally better)
-                if (contract.CompilerVersion && contract.CompilerVersion.includes('0.8')) {
-                    score += 20;
-                }
+                const holderCount = holders.data.length;
                 
-                // Optimization used
-                if (contract.OptimizationUsed === '1') {
-                    score += 15;
-                }
+                if (holderCount < 50) return 25;
+                if (holderCount < 200) return 45;
+                if (holderCount < 1000) return 65;
+                if (holderCount < 5000) return 85;
+                return 95;
+            }
+            
+            calculateActivityScore(dexData) {
+                if (!dexData?.pairs?.[0]) return 40;
                 
-                // Not a proxy contract (generally safer)
-                if (!contract.Proxy || contract.Proxy === '0') {
-                    score += 25;
-                }
+                const pair = dexData.pairs[0];
+                const volume24h = pair.volume?.h24 || 0;
+                const txns24h = pair.txns?.h24?.buys + pair.txns?.h24?.sells || 0;
+                
+                let score = 30;
+                
+                if (volume24h > 1000) score += 20;
+                if (volume24h > 10000) score += 15;
+                if (txns24h > 50) score += 20;
+                if (txns24h > 200) score += 15;
                 
                 return Math.min(100, score);
             }
             
             calculateOverallScore(scores) {
                 const weights = {
-                    liquidity: 0.35,
-                    security: 0.30,
-                    smartMoney: 0.20,
-                    social: 0.15
+                    liquidity: 0.30,
+                    migration: 0.25,
+                    distribution: 0.20,
+                    activity: 0.15,
+                    social: 0.10
                 };
                 
                 let weightedSum = 0;
@@ -936,13 +1033,13 @@
                     }
                 });
                 
-                return totalWeight > 0 ? Math.round(weightedSum / totalWeight) : 0;
+                return totalWeight > 0 ? Math.round(weightedSum / totalWeight) : 50;
             }
         }
 
         // Initialize the application
         const apiManager = new APIManager();
-        const tokenAnalyzer = new TokenAnalyzer(apiManager);
+        const tokenAnalyzer = new SolanaTokenAnalyzer(apiManager);
 
         // UI Functions
         function showSetupModal() {
@@ -966,23 +1063,17 @@
         function saveAPIKeys() {
             const config = {
                 dexscreener: document.getElementById('dexscreenerKey').value.trim(),
-                etherscan: document.getElementById('etherscanKey').value.trim(),
-                coingecko: document.getElementById('coingeckoKey').value.trim(),
+                solscan: document.getElementById('solscanKey').value.trim(),
                 twitter: document.getElementById('twitterToken').value.trim()
             };
             
-            // Validate required keys
-            if (!config.dexscreener && !config.etherscan) {
-                showMessage('Please provide at least one API key (DexScreener or Etherscan) for basic functionality.', 'error');
-                return;
-            }
-            
             apiManager.saveConfiguration(config);
-            showMessage('API configuration saved successfully! You can now analyze tokens with real data.', 'success');
+            showMessage('Solana API configuration saved successfully! Enhanced analysis now available.', 'success');
             
             // Clear form
             Object.keys(config).forEach(key => {
-                document.getElementById(key + 'Key').value = '';
+                const element = document.getElementById(key + 'Key');
+                if (element) element.value = '';
             });
             
             setTimeout(() => {
@@ -994,12 +1085,12 @@
             const coinAddress = document.getElementById('coinAddress').value.trim();
             
             if (!coinAddress) {
-                alert('Please enter a token contract address');
+                alert('Please enter a Solana token contract address');
                 return;
             }
 
-            if (!isValidAddress(coinAddress)) {
-                alert('Please enter a valid contract address');
+            if (!isValidSolanaAddress(coinAddress)) {
+                alert('Please enter a valid Solana contract address');
                 return;
             }
 
@@ -1011,10 +1102,6 @@
 
             try {
                 const analysis = await tokenAnalyzer.analyzeToken(coinAddress);
-                
-                // Cache analysis data for offline use
-                pwaManager.cacheAnalysis(analysis);
-                
                 displayResults(analysis);
                 
                 document.getElementById('loading').style.display = 'none';
@@ -1023,57 +1110,21 @@
             } catch (error) {
                 console.error('Analysis failed:', error);
                 
-                // Check if we're offline and have cached data
-                if (!navigator.onLine) {
-                    const cachedData = await getCachedAnalysis(coinAddress);
-                    if (cachedData) {
-                        displayResults(cachedData);
-                        showOfflineMessage();
-                    } else {
-                        const demoAnalysis = generateDemoAnalysis(coinAddress);
-                        displayResults(demoAnalysis);
-                        showOfflineMessage();
-                    }
-                } else {
-                    // Fall back to demo data if real analysis fails
-                    const demoAnalysis = generateDemoAnalysis(coinAddress);
-                    displayResults(demoAnalysis);
-                    
-                    // Show error message
-                    const resultsDiv = document.getElementById('results');
-                    resultsDiv.insertAdjacentHTML('afterbegin', 
-                        '<div class="error-message">⚠️ Unable to fetch real-time data. Showing demo analysis. Please configure APIs for accurate results.</div>'
-                    );
-                }
+                const demoAnalysis = generateSolanaDemoAnalysis(coinAddress);
+                displayResults(demoAnalysis);
                 
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('results').style.display = 'block';
+                
+                // Show error message
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.insertAdjacentHTML('afterbegin', 
+                    '<div class="error-message">⚠️ Unable to fetch real-time Solana data. Showing demo analysis. Please configure Solscan API for accurate results.</div>'
+                );
             } finally {
                 document.getElementById('analyzeBtn').disabled = false;
                 document.getElementById('btnText').textContent = 'Analyze Token';
             }
-        }
-
-        async function getCachedAnalysis(contractAddress) {
-            try {
-                if ('caches' in window) {
-                    const cache = await caches.open('meme-coin-analyzer-data-v1.0.0');
-                    const response = await cache.match(`/analysis/${contractAddress}`);
-                    if (response) {
-                        return await response.json();
-                    }
-                }
-            } catch (error) {
-                console.error('Failed to get cached analysis:', error);
-            }
-            return null;
-        }
-
-        function showOfflineMessage() {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.insertAdjacentHTML('afterbegin', 
-                '<div class="error-message">📱 You\'re offline. Showing cached analysis data. Results will sync when connection is restored.</div>'
-            );
         }
 
         function displayResults(analysis) {
@@ -1083,40 +1134,39 @@
             
             // Update metrics
             document.getElementById('liquidityScore').textContent = `${analysis.scores.liquidity || 0}/100`;
-            document.getElementById('securityScore').textContent = `${analysis.scores.security || 0}/100`;
-            document.getElementById('smartMoneyScore').textContent = `${analysis.scores.smartMoney || 0}/100`;
-            document.getElementById('socialScore').textContent = `${analysis.scores.social || 0}/100`;
+            document.getElementById('migrationScore').textContent = `${analysis.scores.migration || 0}/100`;
+            document.getElementById('distributionScore').textContent = `${analysis.scores.distribution || 0}/100`;
+            document.getElementById('activityScore').textContent = `${analysis.scores.activity || 0}/100`;
             
             // Update descriptions
-            updateDescriptions(analysis);
+            updateSolanaDescriptions(analysis);
             
             // Update risk level
             updateRiskLevel(analysis.scores.overall || 0);
         }
 
-        function updateDescriptions(analysis) {
+        function updateSolanaDescriptions(analysis) {
             const liquidity = analysis.scores.liquidity || 0;
-            const security = analysis.scores.security || 0;
+            const migration = analysis.scores.migration || 50;
             
             document.getElementById('liquidityDesc').textContent = 
-                liquidity > 80 ? 'Excellent liquidity security detected. Low rug pull risk.' :
-                liquidity > 60 ? 'Good liquidity management with adequate security measures.' :
-                liquidity > 30 ? 'Moderate liquidity concerns. Review tokenomics carefully.' :
-                'High liquidity risk detected. Exercise extreme caution.';
+                liquidity > 80 ? 'Excellent liquidity detected on Raydium/Orca. Low rug pull risk.' :
+                liquidity > 60 ? 'Good DEX liquidity with decent trading volume.' :
+                liquidity > 30 ? 'Moderate liquidity concerns. Check pump.fun graduation status.' :
+                'High liquidity risk detected. Proceed with extreme caution.';
 
-            document.getElementById('securityDesc').textContent = 
-                security > 80 ? 'Contract is verified with strong security features.' :
-                security > 60 ? 'Contract verification confirmed with standard security.' :
-                security > 30 ? 'Basic contract security measures in place.' :
-                'Contract security concerns detected. High risk.';
+            document.getElementById('migrationDesc').textContent = 
+                migration > 85 ? 'Successfully migrated from pump.fun to major DEX. Good sign.' :
+                migration > 70 ? 'Standard Solana token with proper DEX presence.' :
+                migration > 40 ? 'Still on pump.fun or early stage. Higher risk profile.' :
+                'Token security concerns detected. Verify pump.fun status.';
 
-            document.getElementById('smartMoneyDesc').textContent = 
-                analysis.sources.includes('DexScreener') ? 'Analyzing successful trader wallet activity...' :
-                'Smart money tracking requires API configuration.';
+            document.getElementById('distributionDesc').textContent = 
+                analysis.sources.includes('Solscan') ? 'Analyzing Solana wallet holder distribution patterns...' :
+                'Holder analysis requires Solscan API configuration.';
 
-            document.getElementById('socialDesc').textContent = 
-                analysis.sources.includes('Twitter') ? 'Social sentiment analysis in progress...' :
-                'Social analysis requires Twitter API configuration.';
+            document.getElementById('activityDesc').textContent = 
+                'Tracking recent Solana transactions and DEX trading activity...';
         }
 
         function updateRiskLevel(score) {
@@ -1137,45 +1187,42 @@
             }
         }
 
-        function generateDemoAnalysis(contractAddress) {
+        function generateSolanaDemoAnalysis(contractAddress) {
             return {
                 contractAddress,
                 timestamp: Date.now(),
-                dataQuality: 20,
+                dataQuality: 30,
                 sources: ['Demo'],
                 scores: {
-                    overall: Math.floor(Math.random() * 40) + 30,
-                    liquidity: Math.floor(Math.random() * 50) + 25,
-                    security: Math.floor(Math.random() * 60) + 20,
-                    smartMoney: Math.floor(Math.random() * 80) + 10,
-                    social: Math.floor(Math.random() * 70) + 15
+                    overall: Math.floor(Math.random() * 40) + 40,
+                    liquidity: Math.floor(Math.random() * 50) + 30,
+                    migration: Math.floor(Math.random() * 60) + 25,
+                    distribution: Math.floor(Math.random() * 70) + 20,
+                    activity: Math.floor(Math.random() * 80) + 15
                 },
-                confidence: 20,
+                confidence: 30,
                 details: {
-                    note: 'This is demo data. Configure APIs for real analysis.'
+                    note: 'This is demo data for Solana analysis. Configure APIs for real analysis.'
                 }
             };
         }
 
-        function isValidAddress(address) {
-            return /^0x[a-fA-F0-9]{40}$/.test(address) || 
-                   /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address) || 
-                   address.length > 20;
+        function isValidSolanaAddress(address) {
+            // Solana addresses are base58 encoded and typically 32-44 characters
+            return /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address);
         }
 
-        // Initialize the application
+        // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if APIs are configured on load
-            const hasAPIs = Object.values(apiManager.apis).some(api => api.status === 'connected');
+            const hasEnhancedAPIs = apiManager.isConnected('solscan');
             
-            if (!hasAPIs) {
-                // Show a helpful message for first-time users
+            if (!hasEnhancedAPIs) {
                 setTimeout(() => {
-                    const intro = confirm('Welcome to Meme Coin Analyzer Pro! To get accurate analysis with real blockchain data, you\'ll need to configure API keys. Would you like to set them up now? (Click Cancel to try with demo data first)');
+                    const intro = confirm('Welcome to Solana Meme Coin Analyzer Pro! This works immediately with basic analysis. For enhanced pump.fun detection and holder analysis, would you like to add Solscan API? (Click Cancel to use basic analysis)');
                     if (intro) {
                         showSetupModal();
                     }
-                }, 1000);
+                }, 2000);
             }
         });
 
