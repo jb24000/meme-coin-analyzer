@@ -14,69 +14,52 @@
   
   "icons": [
     {
-      "src": "assets/icons/icon-72x72.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-96x96.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-128x128.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-144x144.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-152x152.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-192x192.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-384x384.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/icons/icon-512x512.png",
+      "src": "/meme-coin-analyzer/assets/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
-    }
-  ],
-  
-  "screenshots": [
-    {
-      "src": "assets/screenshots/desktop-main.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Main analysis dashboard on desktop"
-    },
-    {
-      "src": "assets/screenshots/mobile-analysis.png", 
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Token analysis on mobile"
     }
   ],
   
@@ -85,37 +68,29 @@
       "name": "Quick Analysis",
       "short_name": "Analyze",
       "description": "Quickly analyze a token",
-      "url": "/?action=analyze",
+      "url": "/meme-coin-analyzer/?action=analyze",
       "icons": [
         {
-          "src": "assets/icons/shortcut-analyze.png",
+          "src": "/meme-coin-analyzer/assets/icons/icon-96x96.png",
           "sizes": "96x96"
         }
       ]
     },
     {
       "name": "API Setup",
-      "short_name": "Setup",
+      "short_name": "Setup", 
       "description": "Configure API keys",
-      "url": "/?action=setup",
+      "url": "/meme-coin-analyzer/?action=setup",
       "icons": [
         {
-          "src": "assets/icons/shortcut-setup.png",
+          "src": "/meme-coin-analyzer/assets/icons/icon-96x96.png",
           "sizes": "96x96"
         }
       ]
     }
   ],
   
-  "protocol_handlers": [
-    {
-      "protocol": "web+memeanalyzer",
-      "url": "/?token=%s"
-    }
-  ],
-  
   "prefer_related_applications": false,
-  "related_applications": [],
   
   "features": [
     "offline-support",
@@ -123,10 +98,6 @@
     "push-notifications",
     "installable"
   ],
-  
-  "edge_side_panel": {
-    "preferred_width": 400
-  },
   
   "launch_handler": {
     "client_mode": "focus-existing"
