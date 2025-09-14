@@ -1958,24 +1958,26 @@
                 document.getElementById('btnText').textContent = 'Analyze Token';
             }
         }
+        
+    function displayResults(analysis) {
+    // --- Existing code (leave as-is) ---
+    // Update scores
+    document.getElementById('overallScore').textContent = analysis.scores.overall || '--';
+    document.getElementById('confidenceScore').textContent = analysis.confidence || '--';
+    
+    // Update metrics
+    document.getElementById('liquidityScore').textContent = `${analysis.scores.liquidity || 0}/100`;
+    document.getElementById('migrationScore').textContent = `${analysis.scores.migration || 0}/100`;
+    document.getElementById('distributionScore').textContent = `${analysis.scores.distribution || 0}/100`;
+    document.getElementById('activityScore').textContent = `${analysis.scores.activity || 0}/100`;
+    
+    // Update descriptions
+    updateSolanaDescriptions(analysis);
+    
+    // Update risk level
+    updateRiskLevel(analysis.scores.overall || 0);
 
-        function displayResults(analysis) {
-            // Update scores
-            document.getElementById('overallScore').textContent = analysis.scores.overall || '--';
-            document.getElementById('confidenceScore').textContent = analysis.confidence || '--';
-            
-            // Update metrics
-            document.getElementById('liquidityScore').textContent = `${analysis.scores.liquidity || 0}/100`;
-            document.getElementById('migrationScore').textContent = `${analysis.scores.migration || 0}/100`;
-            document.getElementById('distributionScore').textContent = `${analysis.scores.distribution || 0}/100`;
-            document.getElementById('activityScore').textContent = `${analysis.scores.activity || 0}/100`;
-            
-            // Update descriptions
-            updateSolanaDescriptions(analysis);
-            
-            // Update risk level
-            updateRiskLevel(analysis.scores.overall || 0);
-        }
+    // --- New Enhancements (safe extensions) ---
 
         function updateSolanaDescriptions(analysis) {
             const liquidity = analysis.scores.liquidity || 0;
