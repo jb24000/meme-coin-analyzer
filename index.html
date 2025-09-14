@@ -1977,6 +1977,8 @@
     // Update risk level
     updateRiskLevel(analysis.scores.overall || 0);
 
+     // After updating core scores and descriptions:
+     displayEnhancedResults(analysis);       
     // --- New Enhancements (safe extensions) ---
 
     // 🔴 Red Flags
