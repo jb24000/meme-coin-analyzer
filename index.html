@@ -2025,8 +2025,6 @@ function displayResults(analysis) {
         }
     }
 
-} // ✅ FINAL closing brace of the function
-
     // 🔐 Security Checks
     if (analysis.security) {
         if (document.getElementById('isMintAuthorityRevoked')) {
@@ -2074,6 +2072,8 @@ function displayResults(analysis) {
                 analysis.market.holdersCount || '--';
         }
     }
+
+    } // ✅ FINAL closing brace of the function
 
         function updateSolanaDescriptions(analysis) {
             const liquidity = analysis.scores.liquidity || 0;
