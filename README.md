@@ -43,7 +43,7 @@ python -m http.server 8000  # Then visit http://localhost:8000
 ```
 
 ### Option 2: Live Demo
-Visit the live demo: [https://yourusername.github.io/meme-coin-analyzer](https://yourusername.github.io/meme-coin-analyzer)
+Visit the live demo: [https://yourusername.github.io/meme-coin-analyzer](https://jb24000.github.io/meme-coin-analyzer)
 
 ## 📖 Usage
 
@@ -80,7 +80,7 @@ COINGECKO_API_KEY=your_coingecko_key
 ```
 
 ### API Integration
-The app supports multiple data sources. See [API_INTEGRATION.md](docs/API_INTEGRATION.md) for detailed setup instructions.
+The app supports multiple data sources. See [API_INTEGRATION.md](docs/api_integration.md) for detailed setup instructions.
 
 ## 📊 Machine Learning Details
 
@@ -162,7 +162,7 @@ This tool is for educational and research purposes only. Cryptocurrency investme
 
 ## 🤝 Contributing
 
-We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! Please read [CONTRIBUTING.md](contributing.md) for guidelines.
 
 ### Ways to Contribute
 - 🐛 **Bug Reports** - Help us identify and fix issues
@@ -173,7 +173,7 @@ We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](license) file for details.
 
 ## 🙏 Acknowledgments
 
