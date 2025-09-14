@@ -1398,7 +1398,7 @@
 
         class JupiterAPI {
             constructor() {
-                this.baseUrl = 'https://price.jup.ag/v4';
+                this.baseUrl = 'https://quote-api.jup.ag/v6';
             }
             
             async getTokenPrice(contractAddress) {
@@ -1913,54 +1913,83 @@
             }, 2000);
         }
 
-        async function analyzeCoin() {
-            const coinAddress = document.getElementById('coinAddress').value.trim();
-            
-            if (!coinAddress) {
-                alert('Please enter a Solana token contract address');
-                return;
-            }
+async function analyzeCoin() {
+    const coinAddress = document.getElementById('coinAddress').value.trim();
+    
+    if (!coinAddress) {
+        alert('Please enter a Solana token contract address');
+        return;
+    }
 
-            if (!isValidSolanaAddress(coinAddress)) {
-                alert('Please enter a valid Solana contract address');
-                return;
-            }
+    if (!isValidSolanaAddress(coinAddress)) {
+        alert('Please enter a valid Solana contract address');
+        return;
+    }
 
-            // Show loading state
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('results').style.display = 'none';
-            document.getElementById('analyzeBtn').disabled = true;
-            document.getElementById('btnText').textContent = 'Analyzing...';
+    // Show loading state
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('results').style.display = 'none';
+    document.getElementById('analyzeBtn').disabled = true;
+    document.getElementById('btnText').textContent = 'Analyzing...';
 
-            try {
-                const analysis = await tokenAnalyzer.analyzeToken(coinAddress);
-                displayResults(analysis);
-                
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('results').style.display = 'block';
-                
-            } catch (error) {
-                console.error('Analysis failed:', error);
-                
-                const demoAnalysis = generateSolanaDemoAnalysis(coinAddress);
-                displayResults(demoAnalysis);
-                
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('results').style.display = 'block';
-                
-                // Show error message
-                const resultsDiv = document.getElementById('results');
-                resultsDiv.insertAdjacentHTML('afterbegin', 
-                    '<div class="error-message">⚠️ Unable to fetch real-time Solana data. Showing demo analysis. Please configure Solscan API for accurate results.</div>'
-                );
-            } finally {
-                document.getElementById('analyzeBtn').disabled = false;
-                document.getElementById('btnText').textContent = 'Analyze Token';
-            }
-        }
+    try {
+        const analysis = await tokenAnalyzer.analyzeToken(coinAddress);
+        
+        // Run enhanced analysis
+        await runEnhancedAnalysis(analysis);
+        
+        displayResults(analysis);
+        
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        
+    } catch (error) {
+        console.error('Analysis failed:', error);
+        
+        const demoAnalysis = generateSolanaDemoAnalysis(coinAddress);
+        
+        // Run enhanced analysis on demo data too
+        await runEnhancedAnalysis(demoAnalysis);
+        
+        displayResults(demoAnalysis);
+        
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        
+        // Show error message
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.insertAdjacentHTML('afterbegin', 
+            '<div class="error-message">⚠️ Unable to fetch real-time Solana data. Showing demo analysis. Please configure Solscan API for accurate results.</div>'
+        );
+    } finally {
+        document.getElementById('analyzeBtn').disabled = false;
+        document.getElementById('btnText').textContent = 'Analyze Token';
+    }
+}
 
-        function displayResults(analysis) {
-    // --- Existing code (leave as-is) ---
+// Enhanced analysis integration function
+const runEnhancedAnalysis = async (analysis) => {
+    try {
+        console.log('Running enhanced analysis...');
+        
+        // Run all enhanced analysis modules
+        analysis.security = await securityAnalyzer.analyzeTokenSecurity(analysis.contractAddress, analysis.details);
+        analysis.social = await socialAnalyzer.analyzeSocialSentiment(analysis.contractAddress);
+        analysis.whale = await whaleTracker.analyzeWhaleActivity(analysis.contractAddress, analysis.details.holders);
+        analysis.pumpfun = await pumpFunAnalyzer.analyzePumpFunStatus(analysis.contractAddress, analysis.details.dexData);
+        
+        console.log('Enhanced analysis completed successfully');
+    } catch (error) {
+        console.log('Enhanced analysis error:', error);
+        // Provide fallback data if enhanced analysis fails
+        analysis.security = { lpLock: { status: 'unknown' }, honeypot: { status: 'unknown' } };
+        analysis.social = { twitter: { mentions: 0 }, overall: { sentiment: 50 } };
+        analysis.whale = { top10Holdings: '--', whaleTransactions: 0 };
+        analysis.pumpfun = { graduationStatus: 'Unknown' };
+    }
+};
+
+function displayResults(analysis) {
     // Update scores
     document.getElementById('overallScore').textContent = analysis.scores.overall || '--';
     document.getElementById('confidenceScore').textContent = analysis.confidence || '--';
@@ -1976,9 +2005,10 @@
     
     // Update risk level
     updateRiskLevel(analysis.scores.overall || 0);
-
-     // After updating core scores and descriptions:
-     displayEnhancedResults(analysis);       
+    
+    // Display enhanced results
+    displayEnhancedResults(analysis);
+}
     // --- New Enhancements (safe extensions) ---
 
     // 🔴 Red Flags
